@@ -11,7 +11,7 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 ## Objetivos
 
 * Comprender el termino general de componente gráfico, como identificarlos para su construcción en una interfaz gráfica y de que partes esta compuesto dicho componente.
-*  Aprender el uso de eventos por acción para darle interactividad a nuestras interfaces gráficas de forma general y forma especifica.
+*  Aprender el uso de eventos por acción para darle interactividad a nuestras interfaces gráficas de forma general y discriminando por acciones.
 * Implementar los componentes gráficos para realizar una primera aproximación de la vista principal del proyecto.
 
 # Antes de comenzar
@@ -74,7 +74,7 @@ Una buena forma de tener un código organizado, con una responsabilidad clara de
 
 De la anterior imágen se puede observar varias particularidades:
 * Un Componente gráfico puede contener a otro componente por ejemplo el **Componente Panel Principal** contiene varios componentes mas.
-* Un Componente puede cambiar de contenido, por ejemplo si el usuario escoge una lista u oprime cualquier botón es muy probable que el **Componente Panel Principal** remueva su contenido y llame a otros componentes para satisfacer lo que quiera ver el usuario.
+* Un Componente puede cambiar de contenido, por ejemplo si el usuario escoge una lista o si oprime cualquier botón es muy probable que el **Componente Panel Principal** remueva su contenido y llame a otros componentes para satisfacer lo que quiera ver el usuario.
 * Un componente puede ser **reutilizable**, note por ejemplo que el **componente Recomendaciones** se esta llamando varias veces y no se necesita crear distintas clases para mostrarlo en pantalla las veces que sea necesario, simplemente se puede crear un arreglo de componentes de ese tipo para mostrarlo varias veces. Incluso si en otra parte de la aplicación se requiera este componente podría fácilmente ser llamado y usarse.
 * Cada componente cumple una función especifica lo que le da la cualidad a la aplicación de dividir responsabilidades y ademas es mucho mas fácil asi comprender el código de una sola parte en especifico que de toda una aplicación.
 
@@ -118,7 +118,8 @@ Esta clase se encargara unicamente de mostrar en pantalla las diferentes objetos
 Note que aunque en este ejemplo y hasta el momento hemos creado clases **Template** que heredan de un **JFrame** también podrían heredar de un **JPanel** por ejemplo.
 - Importará las librerías necesarias para configurar objetos gráficos en pantalla como hemos visto en clases anteriores.
 
-- Recibe como parámetro en el constructor un objeto de la clase component y la iguala a un objeto creado de la misma referencia, esta tecnica es llamada **inyeccion de dependencia**.
+- Recibe como parámetro en el constructor un objeto de la clase **Component** y la iguala a un objeto declarado de la misma referencia, esta técnica es llamada **inyección de dependencia**.
+
 <div align="center">
   <img  src="./resources/inyeccion.png">
   <p>Inyección de la clase Component</p>
@@ -175,7 +176,7 @@ También tiene ciertas Características como:
   <p>Ejemplo de implementación de una interfaz</p>
 </div>
 
-- Cuando se implemente cualquier interfaz esta pedirá que por defecto se implementen también los métodos de esta en la clase, asi que debe realizarse. En este caso la Interfaz **ActionListener** exige la implementación del método **actionPerformed**, por lo general el editor informara del error y se podrá implementar de forma automática. Es en este método donde se gestionara una acción cada vez que el usuario de click a un botón.
+- Cuando se implemente cualquier interfaz esta pedirá que por defecto se implementen también los métodos de esta en la clase, asi que debe realizarse. En este caso la Interfaz **ActionListener** exige la implementación del método **actionPerformed**, por lo general el editor informara del error y se podrá implementar de forma automática. Es en este método donde se gestionará una acción cada vez que el usuario de click a un botón.
 <div align="center">
   <img  src="./resources/metodoImplementado.png">
   <p>Método implementado de la interfaz ActionListener</p>
@@ -224,6 +225,7 @@ Se puede notar que ya no se envía el **this** por parámetro.
 </div>
 Se puede notar que de esta forma ya no recibe nada por parámetro y ejemplifica el objeto de forma normal.
 
+
 De esta forma se podría pensar que se realizo de manera correcta un canal de comunicación entre ambas clases, sin embargo si miramos el modelo de objetos podemos darnos cuenta que no es asi:
 
 <div align="center">
@@ -250,7 +252,12 @@ se puede observar que el método:
 
 Como nuestra clase **LoginComponent** implementa de esta interfaz automáticamente se convierte en un objeto de ese tipo por lo que podemos ingresar en el objeto que creamos de la clase como argumento en el método.
 
-**Nota:** Como es un método de Configuración deberá estar ubicado justo después de la llamada al servicio y antes de que se adicione el botón.
+**Nota:** Como **addActionListener**es un método de Configuración deberá estar ubicado justo después de la llamada al servicio y antes de que se adicione el botón:
+
+<div align="center">
+  <img  src="./resources/codigo4.png">
+  <p>Se añade método de configuración addActionListener</p>
+</div>
 
 También queremos darle acciones al botón de Registrarse y al botón de cerrar y al botón opción 1 por lo que realizaremos la misma configuración.
 
@@ -331,6 +338,8 @@ La discriminación por objeto realiza acciones de acuerdo al objeto del botón q
 De igual forma debemos usar el objeto recibido por defecto **e** de tipo **ActionEvent**  y esta vez llamar a su método:
 
 * **getSource**: Que devuelve un objeto del botón el cual fue oprimido y lo comparamos con el objeto al que queremos separar la acción.
+* Como debemos compararlo con el objeto del botón al que le queremos configurar su acción, debemos obtenerlo a traves del objeto de la clase **Template** y su método **get** correspondiente.
+
 
 Si corremos la aplicación anterior y damos click en el botón Cerrar se mostrara el mensaje **"Botón Cerrar"** y al darle click al botón opcion1 mostrara el mensaje **"Botón opción"** por lo que quedara solucionado el problema, igualmente si damos click en el botón bRegistrarse no tendrá ningún efecto asi se le haya añadido la propiedad de adición de **ActionListener** ya que no hemos configurado ninguna acción para ese botón.
 
@@ -447,6 +456,13 @@ Pueden notar que la forma de encadenar un texto es mediante el uso de **+** y ta
 
 **Nota:** El codigo anterior debe estar adentro del método **mostrarDatosUsuario**.
 
+Nuestro método esta listo para usarse y se ve asi:
+
+<div align="center">
+  <img  src="./resources/codigo5.png">
+  <p>Método para obtener los datos del usuario</p>
+</div>
+
 Si abrimos nuestra aplicación y damos click en el botón entrar se podrá ver un resultado como el siguiente:
 
 <div align="center">
@@ -455,3 +471,8 @@ Si abrimos nuestra aplicación y damos click en el botón entrar se podrá ver u
 </div>
 
 De esta forma hemos comprobado que nuestros métodos para la obtención del valor de nuestros objetos gráficos funciona perfectamente.
+
+
+### **Abrir Vista Principal**
+
+Suponiendo que ya se ha creado previamente todo el componente de vista principal (Clase Template y Clase Component con su Inyección de dependencia)

@@ -35,7 +35,7 @@ public class LoginComponent implements ActionListener{
 
     public void mostrarDatosUsuario(){
         String nombreUsuario = loginTemplate.getTNombreUsuario().getText();
-        String claveUsuario = loginTemplate.getTClaveUsuario().getText();
+        String claveUsuario = new String(loginTemplate.getTClaveUsuario().getPassword());
         String tipoUsuario = ((String) loginTemplate.getCbTipoUsuario().getSelectedItem()); 
         String check= "";
         if(loginTemplate.getCheckSi().isSelected())
@@ -45,12 +45,12 @@ public class LoginComponent implements ActionListener{
         JOptionPane.showMessageDialog(
             null, "Nombre Usuario: "+nombreUsuario+"\n Clave Usuario: "+claveUsuario+ 
             "\nTipo Usuario: "+tipoUsuario+"\n¿Notificaciones?: "+check, "Advertencia", 1
-        );
-        
+        );    
     }
 
     public void entrar(){
         this.vistaPrincipal = new VistaPrincipalComponent();
+        this.vistaPrincipal.getClass();
         loginTemplate.setVisible(false);
     }
 }

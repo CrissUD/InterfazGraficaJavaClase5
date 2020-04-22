@@ -6,6 +6,7 @@ public class VistaPrincipalComponent {
 
     public VistaPrincipalComponent(){
         this.vistaPrincipalTemplate= new VistaPrincipalTemplate(this);
+        vistaPrincipalTemplate.setName("Vista Principal");
     }
 
 }

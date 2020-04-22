@@ -15,6 +15,7 @@ public class VistaPrincipalTemplate extends JFrame {
         super("Vista Principal");
 
         this.vistaPrincipalComponent=vistaPrincipalComponent;
+        this.vistaPrincipalComponent.getClass();
         sRecursos = RecursosService.getService();
 
         getContentPane().setBackground(sRecursos.getColorAzul());
