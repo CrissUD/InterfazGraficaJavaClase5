@@ -103,7 +103,7 @@ public class LoginTemplate extends JFrame {
     public void crearJButtons(){
 
         bEntrar = sObjGraficos.construirJButton(
-            "Entrar", (pDerecha.getWidth() - 230) / 2, 330, 
+            "Entrar", (pDerecha.getWidth() - 250) / 2, 330, 
             250, 45, sRecursos.getCMano(), null, null, sRecursos.getColorAzul(), 
             Color.WHITE, null, "c", true
         );

@@ -6,17 +6,31 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 
 **Cristian Felipe Patiño Cáceres** - Estudiante de Ingeniería de Sistemas de la Universidad Distrital Francisco Jose de Caldas
 
-# Clase 4
+# Clase 5
 
 ## Objetivos
 
 * Comprender el termino general de componente gráfico, como identificarlos para su construcción en una interfaz gráfica y de que partes esta compuesto dicho componente.
-*  Aprender el uso de eventos por acción para darle interactividad a nuestras interfaces gráficas de forma general y discriminando por acciones.
-* Implementar los componentes gráficos para realizar una primera aproximación de la vista principal del proyecto.
+* Aprender el uso de eventos por acción para darle interactividad a nuestras interfaces gráficas de forma general y discriminando por acciones.
+* Explicar y realizar preparativos previos para la implementación de nuestra aplicación Single-Page App.
 
 # Antes de comenzar
 
-En la clase anterior realizamos la incorporación de nuevos serviciós encargados de cosas especificas que ayudan a que nuestro código quede optimizado y con un control en la creación de objetos compartidos. Si miramos nuestra aplicación hasta el momento mediante un diagrama de clases puede verse así:
+En la clase anterior realizamos la incorporación de nuevos serviciós encargados de cosas especificas que ayudan a que nuestro código quede optimizado y con un control en la creación de objetos compartidos. 
+
+En nuestra clase **VistaPrincipal** ya hemos usado el servicio **RecursosService** ahora vamos a obtener el servicio **ObjGraficosService**
+
+**Declaración**
+```javascript
+private ObjGraficosService sObjGraficos;
+```
+
+**Obtención de su ejemplificación**
+```javascript
+sObjGraficos = ObjGraficosService.getService(); // dentro del constructor
+```
+
+Si miramos nuestra aplicación hasta el momento mediante un diagrama de clases puede verse así:
 
 <div align="center">
   <img  src="./resources/modelo1.png">
@@ -50,7 +64,7 @@ En esta clase vamos a abarcar 2 Temas principales y ver 3 items importantes que 
 ### Items
 * Concepto general de Componente Gráfico.
 * ActionListener (Evento por acción)
-* Implementación de Componente Gráfico.
+* Explicación previa y preparación para construcción de una Single-Page App.
 
 # Concepto general de Componente Gráfico
 
@@ -524,5 +538,98 @@ Suceden 2 cosas:
 
 Ahora cuando oprimimos el botón entrar notamos que primero mostrara el mensaje con los datos proporcionados por el usuario y después abrirá la vista principal y cerrara el login.
 
-# Implementación de componentes gráficos 
+# Explicación previa y preparación para construcción de una Single-Page App
 
+Ya podemos abrir desde nuestra aplicación nuestra vista principal, en realidad esta sera la ventana que tendrá la característica de ser una **Single-Page App**. 
+Se podría haber creado una aplicación con una única ventana y dentro de esta contendría el componente de login, sin embargo, en la propuesta del curso se realizo varias ventanas para ver multiples formas de hacerlo. Otra posible ventana extra podría ser la del registro de un usuario, pero hasta ahi seria el numero de ventanas separadas.
+
+Como nuestra ventana principal sera la ventana que contendrá todos los componentes realizados posteriormente ahora los componentes que crearemos de ahora en adelante los vamos a realizar dentro de un paquete llamado **components**, esto para diferenciar los componentes principales (Las ventanas) de los componentes secundarios (los paneles). 
+
+<div align="center">
+  <img  src="./resources/paquetes3.png">
+  <p>Creación de paquete components que contendrá los componentes secundarios dentro de nuestra ventana Single-Page App</p>
+</div>
+
+Efectivamente como se acabo de explicar, los componentes que vamos a crear de ahora en adelante se caracterizan por que su clase **Template** ahora hereda de un **JPanel**.
+
+## Antes de continuar
+
+Vamos a crear un nuevo color en el servicio **RecursosService** este sera el colorMorado y se usara en varios componentes gráficos en el futuro.
+
+**Declaración**
+```javascript
+private Color colorMorado,
+```
+**Ejemplificación**
+```javascript
+colorMorado = new Color(151, 0, 158);
+```
+**Método get**
+```javascript
+public Color getColorMorado(){
+    return colorMorado;
+}
+```
+
+## Preparación de nuestra Ventana Principal
+
+Vamos a crear varios paneles dentro de nuestra Vista principal, estos paneles posteriormente van a ser reemplazados por componentes que crearemos en clases siguientes.
+
+primero vamos a quitar el color de fondo de la ventana, vamos a quitar la barra por defecto de Java y vamos a ajustar su tamaño:
+```javascript
+setUndecorated(true);
+setSize(1100, 650);
+```
+
+Ahora declaramos 3 paneles y los crearemos con ayuda del servicio **objGraficosService**:
+
+**Declaración de paneles**
+```javascript
+private JPanel pNavegacion, pBarra, pPrincipal;
+```
+
+**Creación de método crearJPanels**
+```javascript
+public void crearJPanels(){
+}
+```
+
+**Construcción y adición de paneles**
+
+```javascript
+pNavegacion = sObjGraficos.construirJPanel(0, 0, 250, 700,sRecursos.getColorMorado(), null);
+this.add(pNavegacion);
+
+pBarra = sObjGraficos.construirJPanel(250, 0, 850, 50,sRecursos.getColorAzul(), null);
+this.add(pBarra);
+
+pPrincipal = sObjGraficos.construirJPanel(250, 50, 850, 600, Color.WHITE, null);
+this.add(pPrincipal);
+```
+
+**Nota:** El anterior codigo va dentro del método **crearJPanels**.
+
+**Adición de método en el constructor**
+
+```javascript
+this.crearJPanels();
+```
+
+Por ahora nuestra ventana principal se vera así:
+
+<div align="center">
+  <img  src="./resources/interfaz8.png">
+  <p>Clase Vista Principal</p>
+</div>
+
+EAhora nuestra vista Principal esta lista para empezar a ser construida a traves de componentes los colores se utilizan por ahora para comprobar que los paneles se crearon correctamente.
+
+# Resultados
+
+Si llegaste hasta aquí **!Felicitaciones!** hemos aprendido que son componentes gráficos viendo una introducción de su concepto y aprendiendo cada una de sus partes. Hemos aprendido a utilizar eventos de **ActionListener** y como realizar la discriminación de acciones por botones. Tenemos lista nuestra clase **VistaPrincipal** que sera construida a traves de **componentes Gráficos**.
+
+En la siguiente clase vamos a ver como hacer esta construcción a traves de componentes gráficos y como gestionar la vista de componentes a medida que el usuario haga las peticiones.
+
+# Actividad
+
+Desarrollar los componentes gráficos del login y la vista principal en sus proyectos y realizar la gestión de eventos con los botones para que cierre la aplicación y abra la vista principal.

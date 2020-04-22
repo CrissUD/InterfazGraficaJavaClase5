@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 public class RecursosService {
 
-    private Color colorAzul, colorGrisOscuro;
+    private Color colorAzul, colorMorado, colorGrisOscuro;
     private Font fontTPrincipal, fontTitulo, fontSubtitulo;
     private Cursor cMano;
     private Border borderInferiorAzul;
@@ -18,6 +18,7 @@ public class RecursosService {
     static private RecursosService servicio;
 
     private RecursosService(){
+        colorMorado = new Color(151, 0, 158);
         colorAzul = new Color(60, 78, 120);
         colorGrisOscuro = new Color(80, 80, 80);
         fontTPrincipal = new Font("Rockwell Extra Bold", Font.PLAIN, 20);
@@ -28,6 +29,10 @@ public class RecursosService {
         iCerrar = new ImageIcon("Clase5/resources/img/cerrar.png");
     }
     
+    public Color getColorMorado(){
+        return colorMorado;
+    }
+
     public Color getColorAzul(){
         return colorAzul;
     }
