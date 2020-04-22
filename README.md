@@ -105,7 +105,7 @@ Un componente gráfico se conforma principalmente de 2 clases:
 Algunas particularidades que hay que explicar son:
 
 * Ambas clases deben estar en un único paquete y deben tener una comunicación única bidireccional ya que la clase **Template** necesitara conocer partes de la clase **Component** y viceversa. 
-* La clase **Template** es una clase aislada y solo es conocida por su clase **Component** que la acompaña, para la comunicación de varios componentes se realizara a traves de la clase **Component**.
+* La clase **Template** es una clase aislada y solo es conocida por su clase **Component** que la acompaña, para la comunicación de varios componentes se realizara a traves de las clases **Component**.
 * Antes se dijo que la clase **Component** es la encargada de la comunicación con servicios sin embargo existe una excepción con los servicios creados anteriormente **ObjGraficosService** y **RecursosService** ya que están orientados a la construcción de las clases template. El resto de servicios estará orientado al manejo de datos y esos son los que gestionara la clase **Component** de ser necesario.
 
 Para crear nuestro primer componente gráfico vamos a posicionarnos en el paquete **login** y crearemos una clase llamada **LoginComponent**.
@@ -121,7 +121,7 @@ A continuación se explicaran ciertas características de cada una de las clases
 
 ## Clase Template
 
-Esta clase se encargara unicamente de mostrar en pantalla las diferentes objetos gráficos con las que el usuario interactuará y mostrará los valores obtenidos de la lógica realizada por la clase **Component**. Se caracteriza por:
+Esta clase se encargara unicamente de mostrar en pantalla los diferentes objetos gráficos con las que el usuario interactuará y mostrará los valores obtenidos de la lógica realizada por la clase **Component**. Se caracteriza por:
 
 - Hereda de una clase que le da propiedades gráficas, esta podría ser por ejemplo **JFrame**, **JPanel**, **Canvas** etc. Esta es la clase que va a ser mostrada al usuario.
 <div align="center">
@@ -130,7 +130,7 @@ Esta clase se encargara unicamente de mostrar en pantalla las diferentes objetos
 </div>
 
 Note que aunque en este ejemplo y hasta el momento hemos creado clases **Template** que heredan de un **JFrame** también podrían heredar de un **JPanel** por ejemplo.
-- Importará las librerías necesarias para configurar objetos gráficos en pantalla como hemos visto en clases anteriores.
+- Importará las librerías necesarias para crear objetos gráficos y mostrarlos en pantalla como hemos visto en clases anteriores.
 
 - Recibe como parámetro en el constructor un objeto de la clase **Component** y la iguala a un objeto declarado de la misma referencia, esta técnica es llamada **inyección de dependencia**.
 
@@ -181,7 +181,7 @@ public JCheckBox getCheckNo(){
 
 ## Clase Component
 
-Esta clase se encarga de manejar toda la lógica que la clase template podría necesitar, esta puede incluir manejo de eventos (cuando se oprime un botón, cuando se da click con el Mouse, cuando se oprime una tecla etc.) manejo de servicios, manejo de información etc.
+Esta clase se encarga de manejar toda la lógica que la clase **Template** podría necesitar, esta puede incluir manejo de eventos (cuando se oprime un botón, cuando se da click con el Mouse, cuando se oprime una tecla etc.) manejo de servicios, manejo de información etc.
 También tiene ciertas Características como:
 
 - Puede implementar las interfaces (interfaz es diferente a interfaz Gráfica) que proporcionan la escucha de eventos (no es obligatorio pero es muy común), por ejemplo un **ActionListener** que se activa cuando el usuario oprime un botón. De ser necesario implementa otras interfaces que gestionan otro tipo de eventos como **MouseListener**, **MouseMotionListener**, **KeyListener** etc.
@@ -203,7 +203,7 @@ También tiene ciertas Características como:
   <p>Inyección desde la clase Component</p>
 </div>
 
-**Nota:** Como nuestra clase **Template** ahora necesita un objeto en su constructor dentro de la clase ejecutora **App** se va a llamar a la clase **Component**.
+**Nota:** Como nuestra clase **Template** ahora necesita un objeto en su constructor, dentro de la clase ejecutora **App** se va a llamar a la clase **Component**.
 
 <div align="center">
   <img  src="./resources/codigo6.png">
@@ -244,7 +244,7 @@ Se puede notar que ya no se envía el **this** por parámetro.
   <img  src="./resources/ejemplificacion2.png">
   <p>Ejemplificación común desde la clase LoginTemplate</p>
 </div>
-Se puede notar que de esta forma ya no recibe nada por parámetro y ejemplifica el objeto de forma normal.
+Se puede notar que en este caso ya no recibe nada por parámetro y ejemplifica el objeto como se haría normalmente.
 
 
 De esta forma se podría pensar que se realizo de manera correcta un canal de comunicación entre ambas clases, sin embargo si miramos el modelo de objetos podemos darnos cuenta que no es asi:
@@ -254,13 +254,13 @@ De esta forma se podría pensar que se realizo de manera correcta un canal de co
   <p>Comunicación unidireccional entre objetos</p>
 </div>
 
-Lo que pasa en realidad es que la clase **LoginComponent** crea un objeto de tipo **LoginTemplate** y esta a su vez crea **otro** objeto de tipo **LoginComponent** por lo que ahora en tiempo de ejecución hay dos objetos de la misma clase y no hay una sola comunicación directa entra ambos objetos.
+Lo que pasa en realidad es que la clase **LoginComponent** crea un objeto de tipo **LoginTemplate** y la clase **LoginTemplate** crea a su vez **otro** objeto de tipo **LoginComponent** por lo que ahora en tiempo de ejecución hay dos objetos de la misma clase y no hay una sola comunicación directa entra ambos objetos.
 
 **Nota:** El anterior proceso de creación de clase **Component** e implementación de inyeccion de dependencia se debe realizar también con VistaPrincipal.
 
 # ActionListener (Evento por acción)
 
-Un evento ocurre cuando el usuario realiza alguna acción sobre la interfaz gráfica y desencadena un proceso que al final devolverá un resultado (traer información requerida, guardar información, mostrar una parte de la aplicación, cerrar la aplicación etc.). 
+Un evento ocurre cuando el usuario realiza alguna acción sobre la interfaz gráfica y desencadena un proceso que al final devolverá un resultado (traer información requerida, guardar información, mostrar una parte de la aplicación, cerrar la aplicación etc). 
 Un **ActionListener** es el evento mas básico pero a la vez mas importante, se puede realizar con una gran variedad de objetos gráficos aunque lo ideal es que se use con los botones de la interfaz gráfica.
 
 Ya tenemos nuestra clase **LoginTemplate** que contiene todos los botones en la ventana, y tenemos la clase **LoginComponent** que ha implementado la interfaz **ActionListener** y esta lista para recibir eventos. Para poder crear estas acciones debemos darle una configuración adicional a nuestros JButton, esta sera  **addActionListener**.
@@ -280,7 +280,7 @@ Como nuestra clase **LoginComponent** implementa de esta interfaz automáticamen
   <p>Se añade método de configuración addActionListener</p>
 </div>
 
-También queremos darle acciones al botón de Registrarse y al botón de cerrar y al botón opción 1 por lo que realizaremos la misma configuración.
+También queremos darle acciones al botón de Registrarse, al botón de cerrar y al botón opción 1 por lo que realizaremos la misma configuración.
 
 ```javascript
 bCerrar.addActionListener(loginComponent);
@@ -398,7 +398,7 @@ if(e.getSource()== loginTemplate.getBEntrar()){
 }
 ```
 
-Es necesario entonces crear nuestro métodos **mostrarDatosUsuario** y **entrar** en nuestra clase, estos métodos pueden ir al final de la clase, justo por debajo del método **ActionPerformed**:
+Es necesario entonces crear nuestros métodos **mostrarDatosUsuario** y **entrar** en nuestra clase, estos métodos pueden ir al final de la clase, justo por debajo del método **ActionPerformed**:
 ```javascript
 public void mostrarDatosUsuario(){
 
@@ -448,7 +448,7 @@ Una alternativa para los JPasswordField es la siguiente:
 
 Se puede notar varias cosas:
 * Se usa el método **getPassword** que devuelve un arreglo de tipo **char** es decir un arreglo donde cada posición es un carácter escrito.
-* Como queremos manejar la clave en forma de String debemos manejar un String en forma de objeto (java permite esto) y es necesario ejemplificarlo haciendo **new String()** donde en su constructor obtendrá el arreglo de char y asi convertirlo en un String común.
+* Como queremos manejar la clave en forma de String debemos manejar un String en forma de objeto (java permite esto) y es necesario ejemplificarlo haciendo **new String()** donde en su constructor obtendrá el arreglo de char y así lo convertirá en un String común.
 
 Como por ahora funciona se puede usar cualquiera de los dos métodos sin embargo por prevención es preferible usar el segundo enfoque.
 
@@ -622,11 +622,18 @@ Por ahora nuestra ventana principal se vera así:
   <p>Clase Vista Principal</p>
 </div>
 
-EAhora nuestra vista Principal esta lista para empezar a ser construida a traves de componentes los colores se utilizan por ahora para comprobar que los paneles se crearon correctamente.
+Ahora nuestra vista Principal esta lista para empezar a ser construida a traves de componentes, los colores se utilizan por ahora para comprobar que los paneles se crearon correctamente.
 
 # Resultados
 
 Si llegaste hasta aquí **!Felicitaciones!** hemos aprendido que son componentes gráficos viendo una introducción de su concepto y aprendiendo cada una de sus partes. Hemos aprendido a utilizar eventos de **ActionListener** y como realizar la discriminación de acciones por botones. Tenemos lista nuestra clase **VistaPrincipal** que sera construida a traves de **componentes Gráficos**.
+Si miramos nuestra aplicación a traves de un diagrama de clases esta se vera asi:
+
+<div align="center">
+  <img  src="./resources/modelo3.png">
+  <p>Diagrama de clases general de la aplicación</p>
+</div>
+
 
 En la siguiente clase vamos a ver como hacer esta construcción a traves de componentes gráficos y como gestionar la vista de componentes a medida que el usuario haga las peticiones.
 
