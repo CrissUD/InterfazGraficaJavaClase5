@@ -189,6 +189,13 @@ También tiene ciertas Características como:
   <p>Inyección desde la clase Component</p>
 </div>
 
+**Nota:** Como nuestra clase **Template** ahora necesita un objeto en su constructor dentro de la clase ejecutora **App** se va a llamar a la clase **Component**.
+
+<div align="center">
+  <img  src="./resources/codigo6.png">
+  <p>Llamada a la clase LoginComponent desde App</p>
+</div>
+ 
 ## Explicación Inyección de dependencia
 
 Esta inyeccion se hace de esta forma para tener una comunicación permanente entre las dos clases de forma bidireccional. Asi cuando la clase **Template** necesite algo de la lógica de la clase **Component** podrá hacerlo a traves de su objeto y de igual manera cuando la clase **Component** quiera enviar información a la interfaz gráfica podrá hacerlo a traves del objeto de esta.
@@ -377,9 +384,7 @@ if(e.getSource()== loginTemplate.getBEntrar()){
 }
 ```
 
-### **Obtención de datos desde formularios de interfaz gráfica**
-
-Lo primero que haremos es crear nuestro método **MostrarDatosUsuario** en nuestra clase, también crearemos el método **entrar** para evitar inconvenientes:
+Es necesario entonces crear nuestro métodos **mostrarDatosUsuario** y **entrar** en nuestra clase, estos métodos pueden ir al final de la clase, justo por debajo del método **ActionPerformed**:
 ```javascript
 public void mostrarDatosUsuario(){
 
@@ -389,6 +394,9 @@ public void entrar(){
 
 }
 ```
+
+### **Obtención de datos desde formularios de interfaz gráfica**
+
 Para poder obtener el texto de alguno de los objetos gráficos es necesario obtener primero el objeto, esto se realizara a traves del objeto de la **clase Template** seguido del método **get** correspondiente, una vez obtenido el objeto es posible obtener el valor de lo escrito o escogido por el usuario de la siguiente manera:
 
 ```javascript
@@ -411,11 +419,25 @@ public void mostrarDatosUsuario(){
     String nombreUsuario = loginTemplate.getTNombreUsuario().getText();
 }
 ```
-El anterior proceso se puede realizar de la misma manera con el JPasswordField:
+El anterior proceso se podría realizar de la misma manera con el JPasswordField:
 
 ```javascript
     String claveUsuario = loginTemplate.getTClaveUsuario().getText();
 ```
+
+El anterior código funciona, sin embargo, es posible que el editor de texto lo marque como tachado o saque una advertencia, esto es debido a que en versiones posteriores este código dejara de funcionar, entonces en el futuro cuando corras este código ya no funcione esta acción.
+
+Una alternativa para los JPasswordField es la siguiente:
+```javascript
+    String claveUsuario = new String(loginTemplate.getTClaveUsuario().getPassword());
+```
+
+Se puede notar varias cosas:
+* Se usa el método **getPassword** que devuelve un arreglo de tipo **char** es decir un arreglo donde cada posición es un carácter escrito.
+* Como queremos manejar la clave en forma de String debemos manejar un String en forma de objeto (java permite esto) y es necesario ejemplificarlo haciendo **new String()** donde en su constructor obtendrá el arreglo de char y asi convertirlo en un String común.
+
+Como por ahora funciona se puede usar cualquiera de los dos métodos sin embargo por prevención es preferible usar el segundo enfoque.
+
 **Nota:** El codigo anterior debe estar adentro del método **mostrarDatosUsuario**.
 
 Para un **JComboBox** es necesario llamar al método:
@@ -476,3 +498,31 @@ De esta forma hemos comprobado que nuestros métodos para la obtención del valo
 ### **Abrir Vista Principal**
 
 Suponiendo que ya se ha creado previamente todo el componente de vista principal (Clase Template y Clase Component con su Inyección de dependencia)
+
+<div align="center">
+  <img  src="./resources/paquetes2.png">
+  <p>Creación previa del componente VistaPrincipal</p>
+</div>
+
+Ahora en nuestra clase **LoginComponent** vamos a declarar un objeto de tipo **VistaPrincipalComponent**
+
+<div align="center">
+  <img  src="./resources/codigo7.png">
+  <p>Declaración objeto de tipo VistaPrincipalComponent desde LoginComponent</p>
+</div>
+
+Aquí se evidencia que la comunicación entre componentes se realizara desde las clases **Component**.
+
+Ahora nos ubicaremos en nuestro método **entrar** y escribimos:
+```javascript
+this.vistaPrincipal = new VistaPrincipalComponent();
+loginTemplate.setVisible(false);
+```
+Suceden 2 cosas:
+* Se ejemplifica el objeto de la clase **VistaPrincipalComponent**
+* Se le dice al objeto de la clase **LoginTemplate** que ya no sea visible.
+
+Ahora cuando oprimimos el botón entrar notamos que primero mostrara el mensaje con los datos proporcionados por el usuario y después abrirá la vista principal y cerrara el login.
+
+# Implementación de componentes gráficos 
+
