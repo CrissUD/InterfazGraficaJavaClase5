@@ -37,7 +37,7 @@ Si miramos nuestra aplicación hasta el momento mediante un diagrama de clases p
   <p>Modelo Estructural de clases aproximado de nuestro proyecto hasta el momento</p>
 </div>
 
-El anterior modelo estructural muestra de forma general y aproximada como esta conformado nuestro proyecto, que paquetes tenemos y que dependencias hasta el momento tenemos.
+El anterior modelo estructural muestra de forma general y aproximada como esta conformado nuestro proyecto, que paquetes tenemos y que dependencias hasta el momento existen.
 
 Recordando un poco nuestro recorrido tenemos una clase **LoginTemplate** donde su código ya se modularizo y optimizo. La interfaz gráfica se ve asi:
 
@@ -68,14 +68,14 @@ En esta clase vamos a abarcar 2 Temas principales y ver 3 items importantes que 
 
 # Concepto general de Componente Gráfico
 
-Muchos proyectos normalmente necesitan bastantes interfaces gráficas para soportar todos los requerimientos y todos los datos que se quieren mostrar a un cliente. Se podría crear una  ventana separada por cada vista que se quiere mostrar al cliente, sin embargo las aplicaciones hoy en dia se caracterizan por manejar toda su información, acciones y vistas a traves de una sola ventana. Esto se conoce como una aplicación **Single-Page App**.
+Muchos proyectos normalmente necesitan bastantes interfaces gráficas para soportar todos los requerimientos y todos los datos que un cliente necesita en la aplicación. Se podría crear una  ventana separada por cada vista que se quiere mostrar al cliente, sin embargo las aplicaciones hoy en dia se caracterizan por manejar toda su información, acciones y vistas a traves de una sola ventana. Esto se conoce como una aplicación **Single-Page App**.
 
 <div align="center">
   <img  src="./resources/interfaz3.png">
   <p>Spotify ejemplo de una aplicación Single-Page App</p>
 </div>
 
-Un ejemplo es la aplicación de escritorio de **Spotify** pueden notar que cuando se usa este programa en nuestro computador este no esta abriendo una ventana nueva por cada opción que nosotros damos. La aplicación se encarga de gestionar que elementos mostrar en la misma ventana y que elementos quitar dependiendo de la opción del usuario.
+Un ejemplo es la aplicación de escritorio de **Spotify**, pueden notar que cuando se usa este programa en nuestro computador este no esta abriendo una ventana nueva por cada botón que nosotros oprimimos. La aplicación se encarga de gestionar que elementos mostrar en la misma ventana y que elementos quitar dependiendo de la petición del usuario.
 
 Si todo el código de la aplicación estuviera contenido en una sola ventana sería realmente desastroso, habría una infinidad de objetos gráficos en una sola clase, una cantidad de lineas de código inmensa y el entendimiento y la mantenibilidad del código seria realmente difícil. 
 
@@ -190,7 +190,7 @@ También tiene ciertas Características como:
   <p>Ejemplo de implementación de una interfaz</p>
 </div>
 
-- Cuando se implemente cualquier interfaz esta pedirá que por defecto se implementen también los métodos de esta en la clase, asi que debe realizarse. En este caso la Interfaz **ActionListener** exige la implementación del método **actionPerformed**, por lo general el editor informara del error y se podrá implementar de forma automática. Es en este método donde se gestionará una acción cada vez que el usuario de click a un botón.
+- Cuando se implemente cualquier interfaz esta pedirá que por defecto se implementen también los métodos de esta en la clase, asi que debe realizarse. En este caso la Interfaz **ActionListener** exige la implementación del método **actionPerformed**, por lo general el editor informará del error y se podrá implementar de forma automática. Es en este método donde se gestionará una acción cada vez que el usuario de click a un botón.
 <div align="center">
   <img  src="./resources/metodoImplementado.png">
   <p>Método implementado de la interfaz ActionListener</p>
@@ -212,7 +212,7 @@ También tiene ciertas Características como:
  
 ## Explicación Inyección de dependencia
 
-Esta inyeccion se hace de esta forma para tener una comunicación permanente entre las dos clases de forma bidireccional. Asi cuando la clase **Template** necesite algo de la lógica de la clase **Component** podrá hacerlo a traves de su objeto y de igual manera cuando la clase **Component** quiera enviar información a la interfaz gráfica podrá hacerlo a traves del objeto de esta.
+Esta inyeccion se hace de esta forma para tener una comunicación permanente entre las dos clases de forma bidireccional. Asi cuando la clase **Template** necesite algo de la lógica de la clase **Component** podrá hacerlo a traves de su objeto y de igual manera cuando la clase **Component** quiera enviar o recibir información a la interfaz gráfica podrá hacerlo a traves del objeto de esta.
 A continuación se puede ver un esquema general de un componente Gráfico.
 
 <div align="center">
@@ -335,7 +335,7 @@ Se puede notar que para realizar esta discriminación debemos usar el objeto rec
 
 * **getActionCommand**: Que devuelve un String del comando del botón oprimido **El texto del botón** y lo comparamos con la coincidencia del texto.
 
-Si corremos la aplicación anterior y damos click en el botón Cerrar como este no contiene texto sino una imagen mostrara el mensaje **"Botón Cerrar"** y al darle click al botón entrar mostrara el mensaje **"Botón Entrar"**, sin embargo si damos click en el botón bRegistrarse no tendrá ningún efecto asi se le haya añadido la propiedad de adición de **ActionListener** ya que no hemos configurado ninguna acción para ese botón.
+Si corremos la aplicación anterior y damos click en el botón Cerrar como este no contiene texto sino una imagen mostrara el mensaje **"Botón Cerrar"** y al darle click al botón entrar mostrara el mensaje **"Botón Entrar"**, sin embargo si damos click en el botón bRegistrarse no tendrá ningún efecto asi se le haya añadido la propiedad **addActionListener** ya que no hemos configurado ninguna acción para ese botón.
 
 Sin embargo este enfoque tiene una pequeña particularidad que podría ser una desventaja, si por ejemplo damos click al botón (bOpcion1), saldrá el mismo mensaje que en el botón cerrar, esto debido a que ninguno de los dos tiene texto. 
 
@@ -362,14 +362,14 @@ De igual forma debemos usar el objeto recibido por defecto **e** de tipo **Actio
 * Como debemos compararlo con el objeto del botón al que le queremos configurar su acción, debemos obtenerlo a traves del objeto de la clase **Template** y su método **get** correspondiente.
 
 
-Si corremos la aplicación anterior y damos click en el botón Cerrar se mostrara el mensaje **"Botón Cerrar"** y al darle click al botón opcion1 mostrara el mensaje **"Botón opción"** por lo que quedara solucionado el problema, igualmente si damos click en el botón bRegistrarse no tendrá ningún efecto asi se le haya añadido la propiedad de adición de **ActionListener** ya que no hemos configurado ninguna acción para ese botón.
+Si corremos la aplicación anterior y damos click en el botón Cerrar se mostrara el mensaje **"Botón Cerrar"** y al darle click al botón opcion1 mostrara el mensaje **"Botón opción"** por lo que quedara solucionado el problema, igualmente si damos click en el botón bRegistrarse no tendrá ningún efecto asi se le haya añadido la propiedad **addActionListener** ya que no hemos configurado ninguna acción para ese botón.
 
 Ahora una buena practica es llamar desde el método **actionPerformed** a otros métodos que realicen los procesos en caso de ser muy extenso el código.
 
 Por ejemplo: 
-* El botón **bCerrar** Se encargara de cerrar la aplicación y el código no es para nada extenso asi que se puede mantener adentro.
-* Los botones **bRegistrarse y bOpcion2** solo mostraran por pantalla un mensaje asi que el codigo permanece adentro.
-* El botón **bEntrar** en cambio va a obtener lo que escriba el usuario en tNombreUsuario, tClaveUsuario, cmbTipoUsuario y en los CheckBox y luego ingresar a la vista principal por lo que es preferible escribir un método externo que realice esta acción.
+* El botón **bCerrar** Se encargara de cerrar la aplicación y el código no es para nada extenso asi que se puede mantener adentro del método **actionPerformed**.
+* Los botones **bRegistrarse y bOpcion2** solo mostraran por pantalla un mensaje asi que el codigo permanece adentro del método **actionPerformed**.
+* El botón **bEntrar** en cambio va a obtener lo que escriba el usuario en tNombreUsuario, tClaveUsuario, cmbTipoUsuario y en los CheckBox y luego va a ingresar a la vista principal por lo que es preferible escribir un método externo que realice esta acción.
 
 **Agregando mensajes en los botones bRegistrarse y bOpcion2**
 
@@ -411,14 +411,14 @@ public void entrar(){
 
 ### **Obtención de datos desde formularios de interfaz gráfica**
 
-Para poder obtener el texto de alguno de los objetos gráficos es necesario obtener primero el objeto, esto se realizara a traves del objeto de la **clase Template** seguido del método **get** correspondiente, una vez obtenido el objeto es posible obtener el valor de lo escrito o escogido por el usuario de la siguiente manera:
+Para poder obtener el texto de alguno de los objetos gráficos es necesario obtener primero el objeto, esto se realizara a traves del objeto de la **clase Template** seguido del método **get** correspondiente de la siguiente manera:
 
 ```javascript
 public void mostrarDatosUsuario(){
     loginTemplate.getTNombreUsuario();
 }
 ```
-Para el anterior objeto como es un JTextField la forma de obtener el texto es mediante el método:
+Una vez obtenido el objeto es posible obtener el valor de lo escrito o escogido por el usuario. Para el anterior objeto como es un JTextField la forma de obtener el texto es mediante el método:
 * **getText:** que retorna el texto escrito por el usuario en forma de String.
 
 ```javascript
@@ -439,7 +439,7 @@ El anterior proceso se podría realizar de la misma manera con el JPasswordField
     String claveUsuario = loginTemplate.getTClaveUsuario().getText();
 ```
 
-El anterior código funciona, sin embargo, es posible que el editor de texto lo marque como tachado o saque una advertencia, esto es debido a que en versiones posteriores este código dejara de funcionar, entonces en el futuro cuando corras este código ya no funcione esta acción.
+El anterior código funciona, sin embargo, es posible que el editor de texto lo marque como tachado o saque una advertencia, esto es debido a que en versiones posteriores de Java este código dejara de funcionar, entonces en el futuro cuando corras este código probablemente ya no funcione esta acción.
 
 Una alternativa para los JPasswordField es la siguiente:
 ```javascript
@@ -450,7 +450,7 @@ Se puede notar varias cosas:
 * Se usa el método **getPassword** que devuelve un arreglo de tipo **char** es decir un arreglo donde cada posición es un carácter escrito.
 * Como queremos manejar la clave en forma de String debemos manejar un String en forma de objeto (java permite esto) y es necesario ejemplificarlo haciendo **new String()** donde en su constructor obtendrá el arreglo de char y así lo convertirá en un String común.
 
-Como por ahora funciona se puede usar cualquiera de los dos métodos sin embargo por prevención es preferible usar el segundo enfoque.
+Como por ahora funciona de ambas maneras se puede usar cualquiera de los dos métodos sin embargo por prevención es preferible usar el segundo enfoque.
 
 **Nota:** El codigo anterior debe estar adentro del método **mostrarDatosUsuario**.
 
