@@ -105,7 +105,18 @@ Un componente gráfico se conforma principalmente de 2 clases:
 Algunas particularidades que hay que explicar son:
 
 * Ambas clases deben estar en un único paquete y deben tener una comunicación única bidireccional ya que la clase **Template** necesitara conocer partes de la clase **Component** y viceversa. 
-* La clase **Template** es una clase aislada y solo es conocida por su clase **Component** que la acompaña, para la comunicación de varios componentes se realizara a traves de las clases **Component**.
+* La clase **Template** es una clase aislada y solo es conocida unicamente por su clase **Component** que la acompaña, para la comunicación entre varios componentes se realiza siempre llamando a la clase **Component**.
+
+<div align="center">
+  <img  src="./resources/comunicacion1.png">
+  <p>Ejemplo de comunicación entre componentes</p>
+</div>
+
+<div align="center">
+  <img  src="./resources/comunicacion2.png">
+  <p>Ejemplo de comunicación errónea entre componentes</p>
+</div>
+
 * Antes se dijo que la clase **Component** es la encargada de la comunicación con servicios sin embargo existe una excepción con los servicios creados anteriormente **ObjGraficosService** y **RecursosService** ya que están orientados a la construcción de las clases template. El resto de servicios estará orientado al manejo de datos y esos son los que gestionara la clase **Component** de ser necesario.
 
 Para crear nuestro primer componente gráfico vamos a posicionarnos en el paquete **login** y crearemos una clase llamada **LoginComponent**.
@@ -132,12 +143,13 @@ Esta clase se encargara unicamente de mostrar en pantalla los diferentes objetos
 Note que aunque en este ejemplo y hasta el momento hemos creado clases **Template** que heredan de un **JFrame** también podrían heredar de un **JPanel** por ejemplo.
 - Importará las librerías necesarias para crear objetos gráficos y mostrarlos en pantalla como hemos visto en clases anteriores.
 
-- Recibe como parámetro en el constructor un objeto de la clase **Component** y la iguala a un objeto declarado de la misma referencia, esta técnica es llamada **inyección de dependencia**.
+- Recibe como parámetro en el constructor un objeto de la clase **Component** y la iguala a un objeto declarado de la misma referencia, esta técnica es llamada **inyección de dependencia** y sera explicada mas adelante en esta clase.
 
 <div align="center">
   <img  src="./resources/inyeccion.png">
   <p>Inyección de la clase Component</p>
 </div>
+Algo que se debe aclarar es que una vez es recibido el objeto desde el constructor se realiza esa igualdad para que el objeto recibido sea conocido por toda la clase (atributo) de lo contrario el objeto solo existiría para el constructor y no para los otros métodos que creemos en la misma clase. 
 
 - Para que la clase **Component** pueda realizar acciones con los objetos gráficos de la misma, a la clase **Template** se le deben añadir métodos **get** para los objetos que serán necesarios manipular. Por ejemplo para la clase **LoginTemplate** se generan los siguientes:
 
