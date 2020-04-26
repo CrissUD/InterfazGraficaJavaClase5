@@ -570,7 +570,7 @@ Vamos a crear un nuevo color en el servicio **RecursosService** este sera el col
 
 **Declaración**
 ```javascript
-private Color colorMorado,
+private Color colorMorado;
 ```
 **Ejemplificación**
 ```javascript
@@ -625,6 +625,22 @@ this.add(pPrincipal);
 
 ```javascript
 this.crearJPanels();
+```
+
+Por ultimo debemos agregar los métodos **get** correspondientes a nuestros 3 paneles ya que la clase **Component** de seguro los necesitara en el futuro.
+
+```javascript
+public JPanel getPNavegacion() {
+    return this.pNavegacion;
+}
+
+public JPanel getPPrincipal() {
+    return this.pPrincipal;
+}
+
+public JPanel getPBarra() {
+    return this.pBarra;
+}
 ```
 
 Por ahora nuestra ventana principal se vera así:

@@ -45,4 +45,16 @@ public class VistaPrincipalTemplate extends JFrame {
         pPrincipal = sObjGraficos.construirJPanel(250, 50, 850, 600, Color.WHITE, null);
         this.add(pPrincipal);
     }
+
+    public JPanel getPNavegacion() {
+        return this.pNavegacion;
+    }
+
+    public JPanel getPPrincipal() {
+        return this.pPrincipal;
+    }
+
+    public JPanel getPBarra() {
+        return this.pBarra;
+    }
 }
