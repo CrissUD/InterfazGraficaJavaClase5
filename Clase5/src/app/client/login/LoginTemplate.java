@@ -102,6 +102,7 @@ public class LoginTemplate extends JFrame {
 
     public void crearJButtons(){
 
+        //BOTÓN ENTRAR-----------------------------------------------------------------------------
         bEntrar = sObjGraficos.construirJButton(
             "Entrar", (pDerecha.getWidth() - 250) / 2, 330, 
             250, 45, sRecursos.getCMano(), null, null, sRecursos.getColorAzul(), 
@@ -110,10 +111,10 @@ public class LoginTemplate extends JFrame {
         bEntrar.addActionListener(loginComponent);
         pDerecha.add(bEntrar);
 
+        //BOTÓN CERRAR-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             sRecursos.getICerrar().getImage().getScaledInstance(30, 30, Image.SCALE_AREA_AVERAGING)
         );
-
         bCerrar = sObjGraficos.construirJButton(
             null, 350, 10, 45, 30, sRecursos.getCMano(), iDimAux, null, 
             null, null, null, "c", false
@@ -121,6 +122,7 @@ public class LoginTemplate extends JFrame {
         bCerrar.addActionListener(loginComponent);
         pDerecha.add(bCerrar);
 
+        //BOTÓN REGISTRARSE-----------------------------------------------------------------------
         bRegistrarse = sObjGraficos.construirJButton(
             "Registrarse", 240, 460, 145, 35, sRecursos.getCMano(), null, 
             null, sRecursos.getColorAzul(), Color.WHITE, null, "c", true
@@ -132,6 +134,7 @@ public class LoginTemplate extends JFrame {
             iPunto.getImage().getScaledInstance(20, 20, Image.SCALE_AREA_AVERAGING)
         );
 
+        //BOTÓN OPCIÓN 1-----------------------------------------------------------------------------
         bOpcion1 = sObjGraficos.construirJButton(
             null, 10, 220, 30, 20, sRecursos.getCMano(), iDimAux, null,
             null, null, null, "c", false
@@ -139,12 +142,14 @@ public class LoginTemplate extends JFrame {
         bOpcion1.addActionListener(loginComponent);
         pIzquierda.add(bOpcion1);
 
+        //BOTÓN OPCIÓN 2-----------------------------------------------------------------------------
         bOpcion2 = sObjGraficos.construirJButton(
             null, 10, 250, 30, 20, sRecursos.getCMano(), iDimAux, null,
             null, null, null, "c", false
         );
         pIzquierda.add(bOpcion2);
 
+        //BOTÓN OPCIÓN 3-----------------------------------------------------------------------------
         bOpcion3 = sObjGraficos.construirJButton(
             null, 10, 280, 30, 20, sRecursos.getCMano(), iDimAux, null,
             null, null, null, "c", false
@@ -154,82 +159,86 @@ public class LoginTemplate extends JFrame {
 
     public void crearJLabels(){
 
+        //LABEL LOGO-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iLogo.getImage().getScaledInstance(40, 40, Image.SCALE_AREA_AVERAGING)
         );
-
         lLogo= sObjGraficos.construirJLabel(null, 50, 20, 40, 40, iDimAux, null, null, null);
         pIzquierda.add(lLogo);
 
+        //LABEL TITULO APP-----------------------------------------------------------------------------
         lTituloApp = sObjGraficos.construirJLabel(
             "Login de Usuario", 100, 20, 220, 30, null, Color.WHITE, null, sRecursos.getFontTPrincipal()
         );
         pIzquierda.add(lTituloApp);
 
+        //LABEL SVG-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iSvg.getImage().getScaledInstance(500, 345, Image.SCALE_AREA_AVERAGING)
         );
-
         lSvg= sObjGraficos.construirJLabel(null, 100, 100, 500, 345, iDimAux, null, null, null);
         pIzquierda.add(lSvg);
 
+        //LABEL ESLOGAN-----------------------------------------------------------------------------
         lEslogan = sObjGraficos.construirJLabel(
             "Te ayudamos en todo", (pDerecha.getWidth() - 130) / 2, 60, 130, 20, 
             null, sRecursos.getColorGrisOscuro(), null, sRecursos.getFontSubtitulo()
         );
         pDerecha.add(lEslogan);
 
+        //LABEL TITULO LOGIN-----------------------------------------------------------------------------
         lTituloLogin = sObjGraficos.construirJLabel(
             "Registra tus Datos", (pDerecha.getWidth() - 150) / 2, 80, 150, 30, 
             null, sRecursos.getColorGrisOscuro(), null, sRecursos.getFontTitulo()
         );
         pDerecha.add(lTituloLogin);
 
+        //LABEL NOTIFICACIONES-----------------------------------------------------------------------------
         lNotificaciones = sObjGraficos.construirJLabel(
             "¿Recibir Notificaciones?", (pDerecha.getWidth() - 140) / 2, 400, 140, 20, 
             null, sRecursos.getColorGrisOscuro(), null, sRecursos.getFontSubtitulo()
         );
         pDerecha.add(lNotificaciones);
 
+        //LABEL USUARIO-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iUsuario.getImage().getScaledInstance(30, 30, Image.SCALE_AREA_AVERAGING)
         );
-
         lUsuario= sObjGraficos.construirJLabel(null, 40, 140, 30, 30, iDimAux, null, null, null);
         pDerecha.add(lUsuario);
 
+        //LABEL CLAVE-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iClave.getImage().getScaledInstance(30, 30, Image.SCALE_AREA_AVERAGING)
         );
-
         lClave= sObjGraficos.construirJLabel(null, 40, 270, 30, 30, iDimAux, null, null, null);
         pDerecha.add(lClave);
 
+        //LABEL FACEBOOK-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iFacebook.getImage().getScaledInstance(30, 30, Image.SCALE_AREA_AVERAGING)
         );
-
         lFacebook= sObjGraficos.construirJLabel(null, 20, 460, 30, 30, iDimAux, null, null, null);
         pIzquierda.add(lFacebook);
 
+        //LABEL TWITTER-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iTwitter.getImage().getScaledInstance(30, 30, Image.SCALE_AREA_AVERAGING)
         );
-
         lTwitter= sObjGraficos.construirJLabel(null, 60, 460, 30, 30, iDimAux, null, null, null);
         pIzquierda.add(lTwitter);
 
+        //LABEL YOUTUBE-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iYoutube.getImage().getScaledInstance(30, 30, Image.SCALE_AREA_AVERAGING)
         );
-
         lYoutube= sObjGraficos.construirJLabel(null, 100, 460, 30, 30, iDimAux, null, null, null);
         pIzquierda.add(lYoutube);
 
+        //LABEL FONDO-----------------------------------------------------------------------------
         iDimAux = new ImageIcon(
             iFondo.getImage().getScaledInstance(600, 600, Image.SCALE_AREA_AVERAGING)
         );
-
         lFondo= sObjGraficos.construirJLabel(null, 0, 0, 600, 600, iDimAux, null, null, null);
         pIzquierda.add(lFondo);
     }
