@@ -134,7 +134,7 @@ A continuación se explicaran ciertas características de cada una de las clases
 
 Esta clase se encargara unicamente de mostrar en pantalla los diferentes objetos gráficos con las que el usuario interactuará y mostrará los valores obtenidos de la lógica realizada por la clase **Component**. Se caracteriza por:
 
-- Hereda de una clase que le da propiedades gráficas, esta podría ser por ejemplo **JFrame**, **JPanel**, **Canvas** etc. Esta es la clase que va a ser mostrada al usuario.
+- Heredar de una clase que le da propiedades gráficas, esta podría ser por ejemplo **JFrame**, **JPanel**, **Canvas** etc. Esta es la clase que va a ser mostrada al usuario.
 <div align="center">
   <img  src="./resources/extends.png">
   <p>Ejemplo Herencia en clase Template</p>
@@ -215,7 +215,7 @@ También tiene ciertas Características como:
   <p>Inyección desde la clase Component</p>
 </div>
 
-Como la comunicación hacia un componente se realiza mediante al llamado de la clase **Component** para que se pueda obtener la vista del componente es necesario crear un método **get** que retorne la clase **Template** desde la clase **Component** y asi se pueda obtener desde otro componente esta:
+* Como la comunicación hacia un componente se realiza mediante al llamado de la clase **Component** para que se pueda obtener la vista del componente es necesario crear un método **get** que retorne la clase **Template** desde la clase **Component** y asi se pueda obtener desde otro componente esta:
 
 <div align='center'>
     <img  src='./resources/codigo8.png'>
