@@ -215,6 +215,13 @@ También tiene ciertas Características como:
   <p>Inyección desde la clase Component</p>
 </div>
 
+Como la comunicación hacia un componente se realiza mediante al llamado de la clase **Component** para que se pueda obtener la vista del componente es necesario crear un método **get** que retorne la clase **Template** desde la clase **Component** y asi se pueda obtener desde otro componente esta:
+
+<div align='center'>
+    <img  src='./resources/codigo8.png'>
+    <p>Método get para que desde otro componente se pueda obtener la clase Template que contiene las características gráficas</p>
+</div>
+
 **Nota:** Como nuestra clase **Template** ahora necesita un objeto en su constructor, dentro de la clase ejecutora **App** se va a llamar a la clase **Component**.
 
 <div align="center">
@@ -268,7 +275,7 @@ De esta forma se podría pensar que se realizo de manera correcta un canal de co
 
 Lo que pasa en realidad es que la clase **LoginComponent** crea un objeto de tipo **LoginTemplate** y la clase **LoginTemplate** crea a su vez **otro** objeto de tipo **LoginComponent** por lo que ahora en tiempo de ejecución hay dos objetos de la misma clase y no hay una sola comunicación directa entra ambos objetos.
 
-**Nota:** El anterior proceso de creación de clase **Component** e implementación de inyeccion de dependencia se debe realizar también con VistaPrincipal.
+***Nota:** El anterior proceso de creación de clase **Component**, implementación de inyeccion de dependencia y agregación de método **get** se debe realizar también con VistaPrincipal.*
 
 # ActionListener (Evento por acción)
 

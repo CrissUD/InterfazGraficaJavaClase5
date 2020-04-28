@@ -9,4 +9,7 @@ public class VistaPrincipalComponent {
         vistaPrincipalTemplate.setName("Vista Principal");
     }
 
+    public VistaPrincipalTemplate getVistaPrincipalTemplate(){
+        return this.vistaPrincipalTemplate;
+    }
 }

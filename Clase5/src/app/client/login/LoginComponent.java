@@ -53,4 +53,8 @@ public class LoginComponent implements ActionListener{
         this.vistaPrincipal.getClass();
         loginTemplate.setVisible(false);
     }
+
+    public LoginTemplate getLoginTemplate(){
+        return this.loginTemplate;
+    }
 }
