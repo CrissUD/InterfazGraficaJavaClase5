@@ -115,7 +115,7 @@ public class ObjGraficosService {
 
     public JLabel construirJLabel(
         String texto, int x, int y, int ancho, int alto, ImageIcon imagen, Color colorFuente, 
-        Color colorFondo, Font fuente
+        Color colorFondo, Font fuente, String direccion
     ){        
         label= new JLabel(texto);
         label.setSize(ancho, alto);
@@ -123,10 +123,19 @@ public class ObjGraficosService {
         label.setForeground(colorFuente);
         label.setFont(fuente);
         label.setIcon(imagen);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
         if(colorFondo!=null){
             label.setOpaque(true);
             label.setBackground(colorFondo);
+        }
+        switch(direccion){
+            case "c":
+                label.setHorizontalAlignment(SwingConstants.CENTER);
+                break;
+            case "r":
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
+                break;        
+            default:
+                break;
         }
         return label;
     }
