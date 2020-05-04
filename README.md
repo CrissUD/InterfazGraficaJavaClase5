@@ -33,7 +33,7 @@ sObjGraficos = ObjGraficosService.getService(); // dentro del constructor
 Si miramos nuestra aplicación hasta el momento mediante un diagrama de clases puede verse así:
 
 <div align="center">
-  <img  src="./resources/modelo1.png">
+  <img  src="https://i.imgur.com/LFI29Pt.png">
   <p>Modelo Estructural de clases aproximado de nuestro proyecto hasta el momento</p>
 </div>
 
@@ -42,14 +42,14 @@ El anterior modelo estructural muestra de forma general y aproximada como esta c
 Recordando un poco nuestro recorrido tenemos una clase **LoginTemplate** donde su código ya se modularizo y optimizo. La interfaz gráfica se ve asi:
 
 <div align="center">
-  <img  src="./resources/interfaz1.png">
+  <img  src="https://i.imgur.com/LoVLul5.png">
   <p>Login de usuario de nuestro proyecto</p>
 </div>
 
 También tenemos una clase **VistaPrincipalTemplate** que hasta el momento esta vacía y tiene un color de fondo así:
 
 <div align="center">
-  <img  src="./resources/interfaz2.png">
+  <img  src="https://i.imgur.com/LKlaTvJ.png">
   <p>Vista Principal de nuestro proyecto</p>
 </div>
 
@@ -71,7 +71,7 @@ En esta clase vamos a abarcar 2 Temas principales y ver 3 items importantes que 
 Muchos proyectos normalmente necesitan bastantes interfaces gráficas para soportar todos los requerimientos y todos los datos que un cliente necesita en la aplicación. Se podría crear una  ventana separada por cada vista que se quiere mostrar al cliente, sin embargo las aplicaciones hoy en dia se caracterizan por manejar toda su información, acciones y vistas a traves de una sola ventana. Esto se conoce como una aplicación **Single-Page App**.
 
 <div align="center">
-  <img  src="./resources/interfaz3.png">
+  <img  src="https://i.imgur.com/nke8SN0.png">
   <p>Spotify ejemplo de una aplicación Single-Page App</p>
 </div>
 
@@ -82,7 +82,7 @@ Si todo el código de la aplicación estuviera contenido en una sola ventana ser
 Una buena forma de tener un código organizado, con una responsabilidad clara de cada parte del proyecto y una modularidad coherente es la implementación de **Componentes gráficos**. De esta forma nuestras aplicaciones estarán separadas adecuadamente. Por ejemplo una posible separación por componentes para la aplicación de Spotify seria la siguiente: 
 
 <div align="center">
-  <img  src="./resources/interfaz4.png">
+  <img  src="https://i.imgur.com/lNlkwny.png">
   <p>Spotify posible componetización de la aplicación</p>
 </div>
 
@@ -108,12 +108,12 @@ Algunas particularidades que hay que explicar son:
 * La clase **Template** es una clase aislada y solo es conocida unicamente por su clase **Component** que la acompaña, para la comunicación entre varios componentes se realiza siempre llamando a la clase **Component**.
 
 <div align="center">
-  <img  src="./resources/comunicacion1.png">
+  <img  src="https://i.imgur.com/oT6Bc2l.png">
   <p>Ejemplo de comunicación entre componentes</p>
 </div>
 
 <div align="center">
-  <img  src="./resources/comunicacion2.png">
+  <img  src="https://i.imgur.com/vVNx41P.png">
   <p>Ejemplo de comunicación errónea entre componentes</p>
 </div>
 
@@ -122,7 +122,7 @@ Algunas particularidades que hay que explicar son:
 Para crear nuestro primer componente gráfico vamos a posicionarnos en el paquete **login** y crearemos una clase llamada **LoginComponent**.
 
 <div align="center">
-  <img  src="./resources/paquetes1.png">
+  <img  src="https://i.imgur.com/WSPIUBk.png">
   <p>Creación clase Component dentro del paquete vistaPrincipal</p>
 </div>
 
@@ -136,7 +136,7 @@ Esta clase se encargara unicamente de mostrar en pantalla los diferentes objetos
 
 - Heredar de una clase que le da propiedades gráficas, esta podría ser por ejemplo **JFrame**, **JPanel**, **Canvas** etc. Esta es la clase que va a ser mostrada al usuario.
 <div align="center">
-  <img  src="./resources/extends.png">
+  <img  src="https://i.imgur.com/t57VxhN.png">
   <p>Ejemplo Herencia en clase Template</p>
 </div>
 
@@ -146,7 +146,7 @@ Note que aunque en este ejemplo y hasta el momento hemos creado clases **Templat
 - Recibe como parámetro en el constructor un objeto de la clase **Component** y la iguala a un objeto declarado de la misma referencia, esta técnica es llamada **inyección de dependencia** y sera explicada mas adelante en esta clase.
 
 <div align="center">
-  <img  src="./resources/inyeccion.png">
+  <img  src="https://i.imgur.com/8yoICZU.png">
   <p>Inyección de la clase Component</p>
 </div>
 Algo que se debe aclarar es que una vez es recibido el objeto desde el constructor se realiza esa igualdad para que el objeto recibido sea conocido por toda la clase (atributo) de lo contrario el objeto solo existiría para el constructor y no para los otros métodos que creemos en la misma clase. 
@@ -198,34 +198,34 @@ También tiene ciertas Características como:
 
 - Puede implementar las interfaces (interfaz es diferente a interfaz Gráfica) que proporcionan la escucha de eventos (no es obligatorio pero es muy común), por ejemplo un **ActionListener** que se activa cuando el usuario oprime un botón. De ser necesario implementa otras interfaces que gestionan otro tipo de eventos como **MouseListener**, **MouseMotionListener**, **KeyListener** etc.
 <div align="center">
-  <img  src="./resources/implements.png">
+  <img  src="https://i.imgur.com/NDQGSyP.png">
   <p>Ejemplo de implementación de una interfaz</p>
 </div>
 
 - Cuando se implemente cualquier interfaz esta pedirá que por defecto se implementen también los métodos de esta en la clase, asi que debe realizarse. En este caso la Interfaz **ActionListener** exige la implementación del método **actionPerformed**, por lo general el editor informará del error y se podrá implementar de forma automática. Es en este método donde se gestionará una acción cada vez que el usuario de click a un botón.
 <div align="center">
-  <img  src="./resources/metodoImplementado.png">
+  <img  src="https://i.imgur.com/dCqjHZg.png">
   <p>Método implementado de la interfaz ActionListener</p>
 </div>
 
 - Se tiene un objeto del tipo de la clase **template** y para ejemplificar este objeto se debe enviar como parámetro una referencia a esta misma clase, para eso usamos la palabra **this**, que indica que se esta enviando como parametro a ella misma y asi completar la inyeccion de dependencia.
 
 <div align="center">
-  <img  src="./resources/inyeccionThis.png">
+  <img  src="https://i.imgur.com/9oreOuu.png">
   <p>Inyección desde la clase Component</p>
 </div>
 
 * Como la comunicación hacia un componente se realiza mediante al llamado de la clase **Component** para que se pueda obtener la vista del componente es necesario crear un método **get** que retorne la clase **Template** desde la clase **Component** y asi se pueda obtener desde otro componente esta:
 
 <div align='center'>
-    <img  src='./resources/codigo8.png'>
+    <img  src='https://i.imgur.com/fXMHXzq.png'>
     <p>Método get para que desde otro componente se pueda obtener la clase Template que contiene las características gráficas</p>
 </div>
 
 **Nota:** Como nuestra clase **Template** ahora necesita un objeto en su constructor, dentro de la clase ejecutora **App** se va a llamar a la clase **Component**.
 
 <div align="center">
-  <img  src="./resources/codigo6.png">
+  <img  src="https://i.imgur.com/0FnbWjP.png">
   <p>Llamada a la clase LoginComponent desde App</p>
 </div>
  
@@ -235,14 +235,14 @@ Esta inyeccion se hace de esta forma para tener una comunicación permanente ent
 A continuación se puede ver un esquema general de un componente Gráfico.
 
 <div align="center">
-  <img  src="./resources/modelo2.png">
+  <img  src="https://i.imgur.com/b7rVRer.png">
   <p>Diagrama de clases de un componente Gráfico</p>
 </div>
 
 
 Visto esto en objetos en memoria se ve de la siguiente manera, y se puede denotar una comunicación directa entre los objetos de forma bidireccional:
 <div align="center">
-  <img  src="./resources/bidireccional.png">
+  <img  src="https://i.imgur.com/GmE0xlV.png">
   <p>Comunicación bidireccional entre objetos</p>
 </div>
 
@@ -251,7 +251,7 @@ Una forma diferente de hacer esto (pero errónea) seria la de la ejemplificació
 - En la clase **LoginComponent**:
 
 <div align="center">
-  <img  src="./resources/ejemplificacion1.png">
+  <img  src="https://i.imgur.com/HlC1n6r.png">
   <p>Ejemplificación común desde la clase LoginComponent</p>
 </div>
 
@@ -260,7 +260,7 @@ Se puede notar que ya no se envía el **this** por parámetro.
 - En la clase **LoginTemplate**:
 
 <div align="center">
-  <img  src="./resources/ejemplificacion2.png">
+  <img  src="https://i.imgur.com/ILVUggj.png">
   <p>Ejemplificación común desde la clase LoginTemplate</p>
 </div>
 Se puede notar que en este caso ya no recibe nada por parámetro y ejemplifica el objeto como se haría normalmente.
@@ -269,7 +269,7 @@ Se puede notar que en este caso ya no recibe nada por parámetro y ejemplifica e
 De esta forma se podría pensar que se realizo de manera correcta un canal de comunicación entre ambas clases, sin embargo si miramos el modelo de objetos podemos darnos cuenta que no es asi:
 
 <div align="center">
-  <img  src="./resources/unidireccional.png">
+  <img  src="https://i.imgur.com/7wJYvTw.png">
   <p>Comunicación unidireccional entre objetos</p>
 </div>
 
@@ -295,7 +295,7 @@ Como nuestra clase **LoginComponent** implementa de esta interfaz automáticamen
 **Nota:** Como **addActionListener**es un método de Configuración deberá estar ubicado justo después de la llamada al servicio y antes de que se adicione el botón:
 
 <div align="center">
-  <img  src="./resources/codigo4.png">
+  <img  src="https://i.imgur.com/PmI1kNw.png">
   <p>Se añade método de configuración addActionListener</p>
 </div>
 
@@ -314,7 +314,7 @@ bOpcion1.addActionListener(loginComponent);
 Ahora en nuestra clase **LoginComponent** vamos a probar si realmente funciona, para eso vamos a mostrar un mensaje en pantalla. Nos ubicamos en el método implementado **actionPerformed** y escribimos:
 
 <div align="center">
-  <img  src="./resources/codigo1.png">
+  <img  src="https://i.imgur.com/Q1Gp6Fy.png">
   <p>Prueba 1 de nuestro evento</p>
 </div>
 
@@ -333,7 +333,7 @@ Note que estamos llamando un método que no habíamos visto antes:
 Una vez corremos nuestra aplicación podemos notar que al darle click a cualquiera de los 4 botones a los cuales se les adiciono el **ActionListener** saldrá un mensaje emergente.
 
 <div align="center">
-  <img  src="./resources/interfaz5.png">
+  <img  src="https://i.imgur.com/tgQV63y.png">
   <p>Mensaje emergente al oprimir el botón bEntrar</p>
 </div>
 
@@ -346,7 +346,7 @@ Sin embargo no queremos que todos los botones realicen la misma acción, de hech
 La discriminación por texto, realiza acciones dependiendo del texto que contiene cada botón, por ejemplo:
 
 <div align="center">
-  <img  src="./resources/codigo2.png">
+  <img  src="https://i.imgur.com/YHdasHx.png">
   <p>Discriminación por medio de Texto</p>
 </div>
 
@@ -359,7 +359,7 @@ Si corremos la aplicación anterior y damos click en el botón Cerrar como este 
 Sin embargo este enfoque tiene una pequeña particularidad que podría ser una desventaja, si por ejemplo damos click al botón (bOpcion1), saldrá el mismo mensaje que en el botón cerrar, esto debido a que ninguno de los dos tiene texto. 
 
 <div align="center">
-  <img  src="./resources/interfaz6.png">
+  <img  src="https://i.imgur.com/0DM1vZp.png">
   <p>Mismo mensaje de alerta en diferentes botones</p>
 </div>
 
@@ -371,7 +371,7 @@ Quizás debemos tomar otro enfoque.
 La discriminación por objeto realiza acciones de acuerdo al objeto del botón que fue activado, por ejemplo:
 
 <div align="center">
-  <img  src="./resources/codigo3.png">
+  <img  src="https://i.imgur.com/F49fu04.png">
   <p>Discriminación por medio de Objetos</p>
 </div>
 
@@ -514,14 +514,14 @@ Pueden notar que la forma de encadenar un texto es mediante el uso de **+** y ta
 Nuestro método esta listo para usarse y se ve asi:
 
 <div align="center">
-  <img  src="./resources/codigo5.png">
+  <img  src="https://i.imgur.com/a1LL0Ki.png">
   <p>Método para obtener los datos del usuario</p>
 </div>
 
 Si abrimos nuestra aplicación y damos click en el botón entrar se podrá ver un resultado como el siguiente:
 
 <div align="center">
-  <img  src="./resources/interfaz7.png">
+  <img  src="https://i.imgur.com/PWw3wxt.png">
   <p>Ejemplo de obtención de datos a traves de evento de botón</p>
 </div>
 
@@ -533,14 +533,14 @@ De esta forma hemos comprobado que nuestros métodos para la obtención del valo
 Suponiendo que ya se ha creado previamente todo el componente de vista principal (Clase Template y Clase Component con su Inyección de dependencia)
 
 <div align="center">
-  <img  src="./resources/paquetes2.png">
+  <img  src="https://i.imgur.com/FJ702j6.png">
   <p>Creación previa del componente VistaPrincipal</p>
 </div>
 
 Ahora en nuestra clase **LoginComponent** vamos a declarar un objeto de tipo **VistaPrincipalComponent**
 
 <div align="center">
-  <img  src="./resources/codigo7.png">
+  <img  src="https://i.imgur.com/UmrMwl3.png">
   <p>Declaración objeto de tipo VistaPrincipalComponent desde LoginComponent</p>
 </div>
 
@@ -565,7 +565,7 @@ Se podría haber creado una aplicación con una única ventana y dentro de esta 
 Como nuestra ventana principal sera la ventana que contendrá todos los componentes realizados posteriormente ahora los componentes que crearemos de ahora en adelante los vamos a realizar dentro de un paquete llamado **components**, esto para diferenciar los componentes principales (Las ventanas) de los componentes secundarios (los paneles). 
 
 <div align="center">
-  <img  src="./resources/paquetes3.png">
+  <img  src="https://i.imgur.com/e012veH.png">
   <p>Creación de paquete components que contendrá los componentes secundarios dentro de nuestra ventana Single-Page App</p>
 </div>
 
@@ -653,7 +653,7 @@ public JPanel getPBarra() {
 Por ahora nuestra ventana principal se vera así:
 
 <div align="center">
-  <img  src="./resources/interfaz8.png">
+  <img  src="https://i.imgur.com/7vWBw88.png">
   <p>Clase Vista Principal</p>
 </div>
 
@@ -665,7 +665,7 @@ Si llegaste hasta aquí **!Felicitaciones!** hemos aprendido que son componentes
 Si miramos nuestra aplicación a traves de un diagrama de clases esta se vera asi:
 
 <div align="center">
-  <img  src="./resources/modelo3.png">
+  <img  src="https://i.imgur.com/33uQ7af.png">
   <p>Diagrama de clases general de la aplicación</p>
 </div>
 
