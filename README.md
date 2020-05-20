@@ -321,7 +321,7 @@ Ahora en nuestra clase **LoginComponent** vamos a probar si realmente funciona, 
 Note que estamos llamando un método que no habíamos visto antes:
 
 * **JOptionPane.ShowMessageDialog():** Muestra un mensaje de alerta por pantalla a traves de una ventana emergente y recibe por parámetros:
-  * **Componente (Ventana):** Recibe un como parámetro la ventana relativa donde se quiere mostrar la ventana emergente, si se envía como null, el mensaje se vera en la mitad del monitor, si no, se vera en la mitad de la ventana enviada.
+  * **Componente (Ventana):** Recibe como parámetro la ventana relativa donde se quiere mostrar la ventana emergente, si se envía como null, el mensaje se vera en la mitad del monitor, si no, se vera en la mitad de la ventana enviada.
   * **Mensaje:** Recibe un String y representa el mensaje que se quiere mostrar en pantalla.
   * **Titulo:** Recibe un String por parámetro y representa el titulo de la ventana emergente.
   * **Tipo de Mensaje:** Recibe un entero donde se le indica el tipo de mensaje representado con un icono, donde:
