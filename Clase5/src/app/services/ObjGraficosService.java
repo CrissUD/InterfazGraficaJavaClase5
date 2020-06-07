@@ -234,9 +234,8 @@ public class ObjGraficosService {
 
 
     public static ObjGraficosService getService(){
-        if(servicio == null){
+        if(servicio == null)
             servicio = new ObjGraficosService();
-        }
         return servicio;
     }
 }
