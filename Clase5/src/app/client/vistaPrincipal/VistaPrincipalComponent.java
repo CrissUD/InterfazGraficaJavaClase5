@@ -2,14 +2,13 @@ package app.client.vistaPrincipal;
 
 public class VistaPrincipalComponent {
 
-    private VistaPrincipalTemplate vistaPrincipalTemplate;
+  private VistaPrincipalTemplate vistaPrincipalTemplate;
 
-    public VistaPrincipalComponent(){
-        this.vistaPrincipalTemplate= new VistaPrincipalTemplate(this);
-        vistaPrincipalTemplate.setName("Vista Principal");
-    }
+  public VistaPrincipalComponent() {
+    this.vistaPrincipalTemplate = new VistaPrincipalTemplate(this);
+  }
 
-    public VistaPrincipalTemplate getVistaPrincipalTemplate(){
-        return this.vistaPrincipalTemplate;
-    }
+  public VistaPrincipalTemplate getVistaPrincipalTemplate() {
+    return this.vistaPrincipalTemplate;
+  }
 }
