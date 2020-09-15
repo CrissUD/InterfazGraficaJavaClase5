@@ -11,14 +11,14 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 ## Objetivos
 
 * Comprender el termino general de componente gráfico, como identificarlos para su construcción en una interfaz gráfica y de que partes esta compuesto dicho componente.
-* Aprender el uso de eventos por acción para darle interactividad a nuestras interfaces gráficas de forma general y discriminando por acciones.
-* Explicar y realizar preparativos previos para la implementación de nuestra aplicación Single-Page App.
+* Aprender el uso de eventos por acción para darle interactividad a las interfaces gráficas de forma general y discriminando por acciones.
+* Explicar y realizar preparativos previos para la implementación de la aplicación Single-Page App.
 
 # Antes de comenzar
 
-En la clase anterior realizamos la incorporación de nuevos servicios encargados de cosas especificas que ayudan a que nuestro código quede optimizado y con un control en la creación de objetos compartidos. 
+En la clase anterior realizamos la incorporación de nuevos servicios encargados de cosas especificas que ayudan a que el código quede optimizado y con un control en la creación de objetos compartidos. 
 
-En nuestra clase **VistaPrincipal** ya hemos usado el servicio **RecursosService** ahora vamos a obtener el servicio **ObjGraficosService**
+En la clase **VistaPrincipal** ya hemos usado el servicio **RecursosService** ahora vamos a obtener el servicio **ObjGraficosService**
 
 **Declaración**
 ```javascript
@@ -30,27 +30,27 @@ private ObjGraficosService sObjGraficos;
 sObjGraficos = ObjGraficosService.getService(); // dentro del constructor
 ```
 
-Si miramos nuestra aplicación hasta el momento mediante un diagrama de clases puede verse así:
+Si miramos la aplicación hasta el momento mediante un diagrama de clases puede verse así:
 
 <div align="center">
   <img  src="https://i.imgur.com/LFI29Pt.png">
-  <p>Modelo Estructural de clases aproximado de nuestro proyecto hasta el momento</p>
+  <p>Modelo Estructural de clases aproximado del proyecto hasta el momento</p>
 </div>
 
-El anterior modelo estructural muestra de forma general y aproximada como esta conformado nuestro proyecto, que paquetes tenemos y que dependencias hasta el momento existen.
+El anterior modelo estructural muestra de forma general y aproximada como esta conformado el proyecto, que paquetes tenemos y que dependencias hasta el momento existen.
 
-Recordando un poco nuestro recorrido tenemos una clase **LoginTemplate** donde su código ya se modularizó y optimizó. La interfaz gráfica se ve asi:
+Recordando un poco el recorrido tenemos una clase **LoginTemplate** donde su código ya se modularizó y optimizó. La interfaz gráfica se ve asi:
 
 <div align="center">
   <img  src="https://i.imgur.com/LoVLul5.png">
-  <p>Login de usuario de nuestro proyecto</p>
+  <p>Login de usuario del proyecto</p>
 </div>
 
 También tenemos una clase **VistaPrincipalTemplate** que hasta el momento esta vacía y tiene un color de fondo así:
 
 <div align="center">
   <img  src="https://i.imgur.com/LKlaTvJ.png">
-  <p>Vista Principal de nuestro proyecto</p>
+  <p>Vista Principal del proyecto</p>
 </div>
 
 # Componentes Gráficos y Eventos por Acción 
@@ -75,11 +75,11 @@ Muchos proyectos normalmente necesitan bastantes interfaces gráficas para sopor
   <p>Spotify ejemplo de una aplicación Single-Page App</p>
 </div>
 
-Un ejemplo es la aplicación de escritorio de **Spotify**, pueden notar que cuando se usa este programa en nuestro computador este no esta abriendo una ventana nueva por cada botón que nosotros oprimimos. La aplicación se encarga de gestionar qué elementos mostrar en la misma ventana y qué elementos quitar dependiendo de la petición del usuario.
+Un ejemplo es la aplicación de escritorio de **Spotify**, pueden notar que cuando se usa este programa en el computador este no esta abriendo una ventana nueva por cada botón que nosotros oprimimos. La aplicación se encarga de gestionar qué elementos mostrar en la misma ventana y qué elementos quitar dependiendo de la petición del usuario.
 
 Si todo el código de la aplicación estuviera contenido en una sola ventana sería realmente desastroso, habría una infinidad de objetos gráficos en una sola clase, una cantidad de lineas de código inmensa y el entendimiento y la mantenibilidad del código seria realmente difícil. 
 
-Una buena forma de tener un código organizado, con una responsabilidad clara de cada parte del proyecto y una modularidad coherente es la implementación de **Componentes gráficos**. De esta forma nuestras aplicaciones estarán separadas adecuadamente. Por ejemplo una posible separación por componentes para la aplicación de Spotify seria la siguiente: 
+Una buena forma de tener un código organizado, con una responsabilidad clara de cada parte del proyecto y una modularidad coherente es la implementación de **Componentes gráficos**. De esta forma las aplicaciones estarán separadas adecuadamente. Por ejemplo una posible separación por componentes para la aplicación de Spotify seria la siguiente: 
 
 <div align="center">
   <img  src="https://i.imgur.com/lNlkwny.png">
@@ -119,7 +119,7 @@ Algunas particularidades que hay que explicar son:
 
 * Antes se dijo que la clase **Component** es la encargada de la comunicación con servicios sin embargo existe una excepción con los servicios creados anteriormente **ObjGraficosService** y **RecursosService** ya que están orientados a la construcción de las clases template. El resto de servicios estará orientado al manejo de datos y esos son los que gestionara la clase **Component** de ser necesario.
 
-Para crear nuestro primer componente gráfico vamos a posicionarnos en el paquete **login** y crearemos una clase llamada **LoginComponent**.
+Para crear el primer componente gráfico vamos a posicionarnos en el paquete **login** y crearemos una clase llamada **LoginComponent**.
 
 <div align="center">
   <img  src="https://i.imgur.com/WSPIUBk.png">
@@ -222,7 +222,7 @@ También tiene ciertas Características como:
     <p>Método get para que desde otro componente se pueda obtener la clase Template que contiene las características gráficas</p>
 </div>
 
-**Nota:** Como nuestra clase **Template** ahora necesita un objeto en su constructor, dentro de la clase ejecutora **App** se va a llamar a la clase **Component**.
+**Nota:** Como la clase **Template** ahora necesita un objeto en su constructor, dentro de la clase ejecutora **App** se va a llamar a la clase **Component**.
 
 <div align="center">
   <img  src="https://i.imgur.com/0FnbWjP.png">
@@ -282,7 +282,7 @@ Lo que pasa en realidad es que la clase **LoginComponent** crea un objeto de tip
 Un evento ocurre cuando el usuario realiza alguna acción sobre la interfaz gráfica y desencadena un proceso que al final devolverá un resultado (traer información requerida, guardar información, mostrar una parte de la aplicación, cerrar la aplicación etc). 
 Un **ActionListener** es el evento mas básico pero a la vez mas importante, se puede realizar con una gran variedad de objetos gráficos aunque lo ideal es que se use con los botones de la interfaz gráfica.
 
-Ya tenemos nuestra clase **LoginTemplate** que contiene todos los botones en la ventana, y tenemos la clase **LoginComponent** que ha implementado la interfaz **ActionListener** y esta lista para recibir eventos. Para poder crear estas acciones debemos darle una configuración adicional a nuestros JButton, esta sera  **addActionListener**.
+Ya tenemos la clase **LoginTemplate** que contiene todos los botones en la ventana, y tenemos la clase **LoginComponent** que ha implementado la interfaz **ActionListener** y esta lista para recibir eventos. Para poder crear estas acciones debemos darle una configuración adicional al JButton, esta sera  **addActionListener**.
 
 ```javascript
 bEntrar.addActionListener(loginComponent);
@@ -290,7 +290,7 @@ bEntrar.addActionListener(loginComponent);
 se puede observar que el método:
 * **addActionListener:** Recibe por parámetro un objeto tipo ActionListener.
 
-Como nuestra clase **LoginComponent** implementa de esta interfaz automáticamente se convierte en un objeto de ese tipo por lo que podemos ingresar en el objeto que creamos de la clase como argumento en el método.
+Como la clase **LoginComponent** implementa de esta interfaz automáticamente se convierte en un objeto de ese tipo por lo que podemos ingresar en el objeto que creamos de la clase como argumento en el método.
 
 **Nota:** Como **addActionListener**es un método de Configuración deberá estar ubicado justo después de la llamada al servicio y antes de que se adicione el botón:
 
@@ -311,11 +311,11 @@ bRegistrarse.addActionListener(loginComponent);
 bOpcion1.addActionListener(loginComponent);
 ```
 
-Ahora en nuestra clase **LoginComponent** vamos a probar si realmente funciona, para eso vamos a mostrar un mensaje en pantalla. Nos ubicamos en el método implementado **actionPerformed** y escribimos:
+Ahora en la clase **LoginComponent** vamos a probar si realmente funciona, para eso vamos a mostrar un mensaje en pantalla. Nos ubicamos en el método implementado **actionPerformed** y escribimos:
 
 <div align="center">
   <img  src="https://i.imgur.com/Q1Gp6Fy.png">
-  <p>Prueba 1 de nuestro evento</p>
+  <p>Prueba 1 del evento</p>
 </div>
 
 Note que estamos llamando un método que no habíamos visto antes:
@@ -330,7 +330,7 @@ Note que estamos llamando un método que no habíamos visto antes:
     * 2: Representa un mensaje de Advertencia. 
     * 3: Representa un mensaje de Pregunta.
 
-Una vez corremos nuestra aplicación podemos notar que al darle click a cualquiera de los 4 botones a los cuales se les adiciono el **ActionListener** saldrá un mensaje emergente.
+Una vez corremos la aplicación podemos notar que al darle click a cualquiera de los 4 botones a los cuales se les adiciono el **ActionListener** saldrá un mensaje emergente.
 
 <div align="center">
   <img  src="https://i.imgur.com/tgQV63y.png">
@@ -363,7 +363,7 @@ Sin embargo este enfoque tiene una pequeña particularidad que podría ser una d
   <p>Mismo mensaje de alerta en diferentes botones</p>
 </div>
 
-En nuestras interfaces vamos a tener varios botones que no contienen texto (Botones que solo contienen una imagen) ¿como vamos a discriminarlos unos con los otros?. 
+En las interfaces vamos a tener varios botones que no contienen texto (Botones que solo contienen una imagen) ¿como vamos a discriminarlos unos con los otros?. 
 Quizás debemos tomar otro enfoque.
 
 ### Discriminación por Objeto
@@ -417,7 +417,7 @@ if(e.getSource()== loginTemplate.getBEntrar()){
 }
 ```
 
-Es necesario entonces crear nuestros métodos **mostrarDatosUsuario** y **entrar** en nuestra clase, estos métodos pueden ir al final de la clase, justo por debajo del método **ActionPerformed**:
+Es necesario entonces crear los métodos **mostrarDatosUsuario** y **entrar** en la clase, estos métodos pueden ir al final de la clase, justo por debajo del método **ActionPerformed**:
 ```javascript
 public void mostrarDatosUsuario(){
 
@@ -511,21 +511,21 @@ Pueden notar que la forma de encadenar un texto es mediante el uso de **+** y ta
 
 **Nota:** El codigo anterior debe estar adentro del método **mostrarDatosUsuario**.
 
-Nuestro método esta listo para usarse y se ve asi:
+El método esta listo para usarse y se ve asi:
 
 <div align="center">
   <img  src="https://i.imgur.com/a1LL0Ki.png">
   <p>Método para obtener los datos del usuario</p>
 </div>
 
-Si abrimos nuestra aplicación y damos click en el botón entrar se podrá ver un resultado como el siguiente:
+Si abrimos la aplicación y damos click en el botón entrar se podrá ver un resultado como el siguiente:
 
 <div align="center">
   <img  src="https://i.imgur.com/PWw3wxt.png">
   <p>Ejemplo de obtención de datos a través de evento de botón</p>
 </div>
 
-De esta forma hemos comprobado que nuestros métodos para la obtención del valor de nuestros objetos gráficos funciona perfectamente.
+De esta forma hemos comprobado que los métodos para la obtención del valor de los objetos gráficos funciona perfectamente.
 
 
 ### **Abrir Vista Principal**
@@ -537,7 +537,7 @@ Suponiendo que ya se ha creado previamente todo el componente de vista principal
   <p>Creación previa del componente VistaPrincipal</p>
 </div>
 
-Ahora en nuestra clase **LoginComponent** vamos a declarar un objeto de tipo **VistaPrincipalComponent**
+Ahora en la clase **LoginComponent** vamos a declarar un objeto de tipo **VistaPrincipalComponent**
 
 <div align="center">
   <img  src="https://i.imgur.com/UmrMwl3.png">
@@ -546,7 +546,7 @@ Ahora en nuestra clase **LoginComponent** vamos a declarar un objeto de tipo **V
 
 Aquí se evidencia que la comunicación entre componentes se realizará desde las clases **Component**.
 
-Ahora nos ubicaremos en nuestro método **entrar** y escribimos:
+Ahora nos ubicaremos en el método **entrar** y escribimos:
 ```javascript
 this.vistaPrincipal = new VistaPrincipalComponent();
 loginTemplate.setVisible(false);
@@ -559,14 +559,14 @@ Ahora cuando oprimimos el botón entrar notamos que primero mostrara el mensaje 
 
 # Explicación previa y preparación para construcción de una Single-Page App
 
-Ya podemos abrir desde nuestra aplicación nuestra vista principal, en realidad esta será la ventana que tendrá la característica de ser una **Single-Page App**. 
+Ya podemos abrir desde la aplicación la vista principal, en realidad esta será la ventana que tendrá la característica de ser una **Single-Page App**. 
 Se podría haber creado una aplicación con una única ventana y dentro de esta contendría el componente de login, sin embargo, en la propuesta del curso se realizo varias ventanas para ver multiples formas de hacerlo. Otra posible ventana extra podría ser la del registro de un usuario, pero hasta ahi seria el numero de ventanas separadas.
 
-Como nuestra ventana principal será la ventana que contendrá todos los componentes realizados posteriormente ahora los componentes que crearemos de ahora en adelante los vamos a realizar dentro de un paquete llamado **components**, esto para diferenciar los componentes principales (Las ventanas) de los componentes secundarios (los paneles). 
+Como la ventana principal será la ventana que contendrá todos los componentes realizados posteriormente ahora los componentes que crearemos de ahora en adelante los vamos a realizar dentro de un paquete llamado **components**, esto para diferenciar los componentes principales (Las ventanas) de los componentes secundarios (los paneles). 
 
 <div align="center">
   <img  src="https://i.imgur.com/e012veH.png">
-  <p>Creación de paquete components que contendrá los componentes secundarios dentro de nuestra ventana Single-Page App</p>
+  <p>Creación de paquete components que contendrá los componentes secundarios dentro de la ventana Single-Page App</p>
 </div>
 
 Efectivamente como se acabo de explicar, los componentes que vamos a crear de ahora en adelante se caracterizan por que su clase **Template** ahora hereda de un **JPanel**.
@@ -590,9 +590,9 @@ public Color getColorMorado(){
 }
 ```
 
-## Preparación de nuestra Ventana Principal
+## Preparación de la Ventana Principal
 
-Vamos a crear varios paneles dentro de nuestra Vista principal, estos paneles posteriormente van a ser reemplazados por componentes que crearemos en clases siguientes.
+Vamos a crear varios paneles dentro de la Vista principal, estos paneles posteriormente van a ser reemplazados por componentes que crearemos en clases siguientes.
 
 primero vamos a quitar el color de fondo de la ventana, vamos a quitar la barra por defecto de Java y vamos a ajustar su tamaño:
 ```javascript
@@ -634,7 +634,7 @@ this.add(pPrincipal);
 this.crearJPanels();
 ```
 
-Por ultimo debemos agregar los métodos **get** correspondientes a nuestros 3 paneles ya que la clase **Component** de seguro los necesitará en el futuro.
+Por ultimo debemos agregar los métodos **get** correspondientes a los 3 paneles ya que la clase **Component** de seguro los necesitará en el futuro.
 
 ```javascript
 public JPanel getPNavegacion() {
@@ -650,19 +650,19 @@ public JPanel getPBarra() {
 }
 ```
 
-Por ahora nuestra ventana principal se vera así:
+Por ahora la ventana principal se vera así:
 
 <div align="center">
   <img  src="https://i.imgur.com/7vWBw88.png">
   <p>Clase Vista Principal</p>
 </div>
 
-Ahora nuestra vista Principal esta lista para empezar a ser construida a traves de componentes, los colores se utilizan por ahora para comprobar que los paneles se crearon correctamente.
+Ahora la vista Principal esta lista para empezar a ser construida a traves de componentes, los colores se utilizan por ahora para comprobar que los paneles se crearon correctamente.
 
 # Resultados
 
-Si llegaste hasta aquí **¡Felicitaciones!** hemos aprendido qué son los componentes gráficos viendo una introducción de su concepto y aprendiendo cada una de sus partes. Hemos aprendido a utilizar eventos de **ActionListener** y cómo realizar la discriminación de acciones por botones. Tenemos lista nuestra clase **VistaPrincipal** que será construida a través de **componentes Gráficos**.
-Si miramos nuestra aplicación a traves de un diagrama de clases esta se verá asi:
+Si llegaste hasta aquí **¡Felicitaciones!** hemos aprendido qué son los componentes gráficos viendo una introducción de su concepto y aprendiendo cada una de sus partes. Hemos aprendido a utilizar eventos de **ActionListener** y cómo realizar la discriminación de acciones por botones. Tenemos lista la clase **VistaPrincipal** que será construida a través de **componentes Gráficos**.
+Si miramos la aplicación a traves de un diagrama de clases esta se verá asi:
 
 <div align="center">
   <img  src="https://i.imgur.com/33uQ7af.png">
