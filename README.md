@@ -16,7 +16,7 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 
 # Antes de comenzar
 
-En la clase anterior realizamos la incorporación de nuevos serviciós encargados de cosas especificas que ayudan a que nuestro código quede optimizado y con un control en la creación de objetos compartidos. 
+En la clase anterior realizamos la incorporación de nuevos servicios encargados de cosas especificas que ayudan a que nuestro código quede optimizado y con un control en la creación de objetos compartidos. 
 
 En nuestra clase **VistaPrincipal** ya hemos usado el servicio **RecursosService** ahora vamos a obtener el servicio **ObjGraficosService**
 
@@ -39,7 +39,7 @@ Si miramos nuestra aplicación hasta el momento mediante un diagrama de clases p
 
 El anterior modelo estructural muestra de forma general y aproximada como esta conformado nuestro proyecto, que paquetes tenemos y que dependencias hasta el momento existen.
 
-Recordando un poco nuestro recorrido tenemos una clase **LoginTemplate** donde su código ya se modularizo y optimizo. La interfaz gráfica se ve asi:
+Recordando un poco nuestro recorrido tenemos una clase **LoginTemplate** donde su código ya se modularizó y optimizó. La interfaz gráfica se ve asi:
 
 <div align="center">
   <img  src="https://i.imgur.com/LoVLul5.png">
@@ -75,7 +75,7 @@ Muchos proyectos normalmente necesitan bastantes interfaces gráficas para sopor
   <p>Spotify ejemplo de una aplicación Single-Page App</p>
 </div>
 
-Un ejemplo es la aplicación de escritorio de **Spotify**, pueden notar que cuando se usa este programa en nuestro computador este no esta abriendo una ventana nueva por cada botón que nosotros oprimimos. La aplicación se encarga de gestionar que elementos mostrar en la misma ventana y que elementos quitar dependiendo de la petición del usuario.
+Un ejemplo es la aplicación de escritorio de **Spotify**, pueden notar que cuando se usa este programa en nuestro computador este no esta abriendo una ventana nueva por cada botón que nosotros oprimimos. La aplicación se encarga de gestionar qué elementos mostrar en la misma ventana y qué elementos quitar dependiendo de la petición del usuario.
 
 Si todo el código de la aplicación estuviera contenido en una sola ventana sería realmente desastroso, habría una infinidad de objetos gráficos en una sola clase, una cantidad de lineas de código inmensa y el entendimiento y la mantenibilidad del código seria realmente difícil. 
 
@@ -487,7 +487,7 @@ Para saber cual de las dos opciones de los JCheckBox fue escogida primero creare
 String check= "";
 ```
 Seguido de eso se va a preguntar si alguno de los dos botones fue seleccionado mediante el método:
-* **isSelected:** que retorna un booleano que estará en true si se selecciono o false en caso de que no.
+* **isSelected:** que retorna un booleano que estará en true si se seleccionó o false en caso de que no.
 En caso de ser seleccionado se dará un nuevo valor a la variable **Check** ("Si" en caso de seleccionar el **checkSi** o "No" en caso de seleccionar el **checkNo**).
 
 ```javascript
@@ -522,7 +522,7 @@ Si abrimos nuestra aplicación y damos click en el botón entrar se podrá ver u
 
 <div align="center">
   <img  src="https://i.imgur.com/PWw3wxt.png">
-  <p>Ejemplo de obtención de datos a traves de evento de botón</p>
+  <p>Ejemplo de obtención de datos a través de evento de botón</p>
 </div>
 
 De esta forma hemos comprobado que nuestros métodos para la obtención del valor de nuestros objetos gráficos funciona perfectamente.
@@ -544,7 +544,7 @@ Ahora en nuestra clase **LoginComponent** vamos a declarar un objeto de tipo **V
   <p>Declaración objeto de tipo VistaPrincipalComponent desde LoginComponent</p>
 </div>
 
-Aquí se evidencia que la comunicación entre componentes se realizara desde las clases **Component**.
+Aquí se evidencia que la comunicación entre componentes se realizará desde las clases **Component**.
 
 Ahora nos ubicaremos en nuestro método **entrar** y escribimos:
 ```javascript
@@ -559,10 +559,10 @@ Ahora cuando oprimimos el botón entrar notamos que primero mostrara el mensaje 
 
 # Explicación previa y preparación para construcción de una Single-Page App
 
-Ya podemos abrir desde nuestra aplicación nuestra vista principal, en realidad esta sera la ventana que tendrá la característica de ser una **Single-Page App**. 
+Ya podemos abrir desde nuestra aplicación nuestra vista principal, en realidad esta será la ventana que tendrá la característica de ser una **Single-Page App**. 
 Se podría haber creado una aplicación con una única ventana y dentro de esta contendría el componente de login, sin embargo, en la propuesta del curso se realizo varias ventanas para ver multiples formas de hacerlo. Otra posible ventana extra podría ser la del registro de un usuario, pero hasta ahi seria el numero de ventanas separadas.
 
-Como nuestra ventana principal sera la ventana que contendrá todos los componentes realizados posteriormente ahora los componentes que crearemos de ahora en adelante los vamos a realizar dentro de un paquete llamado **components**, esto para diferenciar los componentes principales (Las ventanas) de los componentes secundarios (los paneles). 
+Como nuestra ventana principal será la ventana que contendrá todos los componentes realizados posteriormente ahora los componentes que crearemos de ahora en adelante los vamos a realizar dentro de un paquete llamado **components**, esto para diferenciar los componentes principales (Las ventanas) de los componentes secundarios (los paneles). 
 
 <div align="center">
   <img  src="https://i.imgur.com/e012veH.png">
@@ -634,7 +634,7 @@ this.add(pPrincipal);
 this.crearJPanels();
 ```
 
-Por ultimo debemos agregar los métodos **get** correspondientes a nuestros 3 paneles ya que la clase **Component** de seguro los necesitara en el futuro.
+Por ultimo debemos agregar los métodos **get** correspondientes a nuestros 3 paneles ya que la clase **Component** de seguro los necesitará en el futuro.
 
 ```javascript
 public JPanel getPNavegacion() {
@@ -661,8 +661,8 @@ Ahora nuestra vista Principal esta lista para empezar a ser construida a traves 
 
 # Resultados
 
-Si llegaste hasta aquí **!Felicitaciones!** hemos aprendido que son componentes gráficos viendo una introducción de su concepto y aprendiendo cada una de sus partes. Hemos aprendido a utilizar eventos de **ActionListener** y como realizar la discriminación de acciones por botones. Tenemos lista nuestra clase **VistaPrincipal** que sera construida a traves de **componentes Gráficos**.
-Si miramos nuestra aplicación a traves de un diagrama de clases esta se vera asi:
+Si llegaste hasta aquí **¡Felicitaciones!** hemos aprendido qué son los componentes gráficos viendo una introducción de su concepto y aprendiendo cada una de sus partes. Hemos aprendido a utilizar eventos de **ActionListener** y cómo realizar la discriminación de acciones por botones. Tenemos lista nuestra clase **VistaPrincipal** que será construida a través de **componentes Gráficos**.
+Si miramos nuestra aplicación a traves de un diagrama de clases esta se verá asi:
 
 <div align="center">
   <img  src="https://i.imgur.com/33uQ7af.png">
@@ -670,7 +670,7 @@ Si miramos nuestra aplicación a traves de un diagrama de clases esta se vera as
 </div>
 
 
-En la siguiente clase vamos a ver como hacer esta construcción a traves de componentes gráficos y como gestionar la vista de componentes a medida que el usuario haga las peticiones.
+En la siguiente clase vamos a ver cómo hacer esta construcción a través de componentes gráficos y cómo gestionar la vista de componentes a medida que el usuario haga las peticiones.
 
 # Actividad
 
