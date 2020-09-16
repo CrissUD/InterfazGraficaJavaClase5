@@ -41,8 +41,10 @@ public class LoginComponent implements ActionListener {
       check = "no";
     JOptionPane.showMessageDialog(
       null, 
-      "Nombre Usuario: " + nombreUsuario + "\n Clave Usuario: " + claveUsuario
-      + "\nTipo Usuario: " + tipoUsuario + "\n¿Notificaciones?: " + check, 
+      "Nombre Usuario: " + nombreUsuario + 
+      "\n Clave Usuario: " + claveUsuario + 
+      "\nTipo Usuario: " + tipoUsuario + 
+      "\n¿Notificaciones?: " + check, 
       "Advertencia", 
       1
     );
