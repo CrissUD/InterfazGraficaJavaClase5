@@ -11,42 +11,43 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 ## Objetivos
 
 * Comprender el termino general de componente gráfico, como identificarlos para su construcción en una interfaz gráfica y de que partes esta compuesto dicho componente.
-* Aprender el uso de eventos por acción para darle interactividad a las interfaces gráficas de forma general y discriminando por acciones.
-* Explicar y realizar preparativos previos para la implementación de la aplicación Single-Page App.
+* Aprender el uso de eventos por acción para generar interactividad a las interfaces gráficas de forma general.
+* Generar una discriminación de eventos para una especificación de acciones y explorar las distintas formas de hacerse.
+* Explicar y realizar preparativos previos para la implementación de una aplicación **Single-Page App**.
 
 # Antes de comenzar
 
-En la clase anterior realizamos la incorporación de nuevos servicios encargados de cosas especificas que ayudan a que el código quede optimizado y con un control en la creación de objetos compartidos. 
+En la sesión anterior se realizó la incorporación de nuevos servicios encargados proveer una lógica que ayudan a que el código este optimizado y exista un control con la creación de objetos compartidos. 
 
-En la clase **VistaPrincipal** ya hemos usado el servicio **RecursosService** ahora vamos a obtener el servicio **ObjGraficosService**
+Por otro lado en la clase **VistaPrincipal** ya se esta haciendo uso del servicio **RecursosService**, ahora se va a obtener el servicio **ObjGraficosService** ya que se va a utilizar en el futuro:
 
-**Declaración**
+**Declaración:**
 ```javascript
 private ObjGraficosService sObjGraficos;
 ```
 
-**Obtención de su ejemplificación**
+**Obtención de Servicio:**
 ```javascript
 sObjGraficos = ObjGraficosService.getService(); // dentro del constructor
 ```
 
-Si miramos la aplicación hasta el momento mediante un diagrama de clases puede verse así:
+La estructura de la aplicación puede observarse mediante un diagrama de clases y este hasta el momento se representa así:
 
 <div align="center">
   <img  src="https://i.imgur.com/LFI29Pt.png">
   <p>Modelo Estructural de clases aproximado del proyecto hasta el momento</p>
 </div>
 
-El anterior modelo estructural muestra de forma general y aproximada como esta conformado el proyecto, que paquetes tenemos y que dependencias hasta el momento existen.
+El anterior modelo estructural muestra de forma general y aproximada como esta conformado el proyecto, ademas de resaltar que paquetes y dependencias existen hasta el momento.
 
-Recordando un poco el recorrido tenemos una clase **LoginTemplate** donde su código ya se modularizó y optimizó. La interfaz gráfica se ve asi:
+Recordando un poco el recorrido se creo la clase **LoginTemplate** donde su código ya se modularizó y optimizó. La interfaz gráfica se ve asi:
 
 <div align="center">
   <img  src="https://i.imgur.com/LoVLul5.png">
   <p>Login de usuario del proyecto</p>
 </div>
 
-También tenemos una clase **VistaPrincipalTemplate** que hasta el momento esta vacía y tiene un color de fondo así:
+También se tiene la clase **VistaPrincipalTemplate** que esta vacía y tiene un color de fondo así:
 
 <div align="center">
   <img  src="https://i.imgur.com/LKlaTvJ.png">
@@ -55,20 +56,23 @@ También tenemos una clase **VistaPrincipalTemplate** que hasta el momento esta 
 
 # Componentes Gráficos y Eventos por Acción 
 
-En esta clase vamos a abarcar 2 Temas principales y ver 3 items importantes que están corelacionados entre ambos temas:
+En esta sesión se van a abarcar 3 Temas principales cada uno con sus respectivos items, relacionados con componentes gráficos, eventos y preparación de una Single Page App:
 
 ## Temas
-* **Componentes Gráficos**
-* **Eventos: ActionListener (Evento por acción)**
+* **Componentes Gráficos**.
+  * **Concepto general de Componente Gráfico**.
+  * **Creación de un componente Gráfico y sus partes**.
+  * **Explicación Inyección de dependencia**.
+* **Eventos: ActionListener (Evento por acción)**.
+  * **Discriminación por Texto o Comando**.
+  * **Discriminación por Objeto**.
+* **Preparación para construcción de una Single-Page App**.
 
-### Items
-* Concepto general de Componente Gráfico.
-* ActionListener (Evento por acción)
-* Explicación previa y preparación para construcción de una Single-Page App.
+# Componentes Gráficos
 
-# Concepto general de Componente Gráfico
+## Concepto general de Componente Gráfico
 
-Muchos proyectos normalmente necesitan bastantes interfaces gráficas para soportar todos los requerimientos y todos los datos que un cliente necesita en la aplicación. Se podría crear una  ventana separada por cada vista que se quiere mostrar al cliente, sin embargo las aplicaciones hoy en dia se caracterizan por manejar toda su información, acciones y vistas a traves de una sola ventana. Esto se conoce como una aplicación **Single-Page App**.
+Muchos proyectos normalmente necesitan bastantes interfaces gráficas para soportar todos los requerimientos, funcionalidades y datos que un cliente necesita en la aplicación. Se podría crear una  ventana separada por cada vista que se quiere mostrar al cliente, sin embargo, las aplicaciones actuales se caracterizan por manejar toda su información, acciones y vistas a traves de una sola ventana. Esto se conoce como una aplicación **Single-Page App**.
 
 <div align="center">
   <img  src="https://i.imgur.com/nke8SN0.png">
@@ -130,7 +134,7 @@ A continuación se explicaran ciertas características de cada una de las clases
 
 ***Nota:** Aunque ya hemos trabajado con clases Template habrán nuevas características que serán necesarias e importantes.* 
 
-## Clase Template
+### **Clase Template**
 
 Esta clase se encargara unicamente de mostrar en pantalla los diferentes objetos gráficos con las que el usuario interactuará y mostrará los valores obtenidos de la lógica realizada por la clase **Component**. Se caracteriza por:
 
@@ -191,7 +195,7 @@ public JCheckBox getCheckNo(){
 }
 ```
 
-## Clase Component
+### **Clase Component**
 
 Esta clase se encarga de manejar toda la lógica que la clase **Template** podría necesitar, esta puede incluir manejo de eventos (cuando se oprime un botón, cuando se da click con el Mouse, cuando se oprime una tecla etc.) manejo de servicios, manejo de información etc.
 También tiene ciertas Características como:
@@ -341,7 +345,7 @@ Podemos observar que si intentamos dar click alguno de los dos botones excluidos
 
 Sin embargo no queremos que todos los botones realicen la misma acción, de hecho necesitamos muchas veces que cada botón haga acciones diferentes. Debemos realizar una discriminación de los botónes para separar acciones.
 
-### Discriminación por Texto
+## Discriminación por Texto o Comando
 
 La discriminación por texto, realiza acciones dependiendo del texto que contiene cada botón, por ejemplo:
 
@@ -366,7 +370,7 @@ Sin embargo este enfoque tiene una pequeña particularidad que podría ser una d
 En las interfaces vamos a tener varios botones que no contienen texto (Botones que solo contienen una imagen) ¿como vamos a discriminarlos unos con los otros?. 
 Quizás debemos tomar otro enfoque.
 
-### Discriminación por Objeto
+## Discriminación por Objeto
 
 La discriminación por objeto realiza acciones de acuerdo al objeto del botón que fue activado, por ejemplo:
 
