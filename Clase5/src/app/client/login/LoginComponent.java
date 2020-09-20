@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import app.client.vistaPrincipal.VistaPrincipalComponent;
 
 public class LoginComponent implements ActionListener {
-
   private LoginTemplate loginTemplate;
   private VistaPrincipalComponent vistaPrincipal;
 
