@@ -364,7 +364,7 @@ public class LoginTemplate extends JFrame {
 
   public void crearJPasswordFields() {
     tClaveUsuario = sObjGraficos.construirJPasswordField(
-      "clave Usuario", 
+      "Clave Usuario", 
       (pDerecha.getWidth() - 260) / 2, 260, 260, 40,
       null, null, 
       sRecursos.getColorAzul(), 
