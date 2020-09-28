@@ -35,21 +35,21 @@ sObjGraficos = ObjGraficosService.getService(); // dentro del constructor
 
 ### **Ajustes en el servicio Recursos Service**
 
-Se va a crear un nuevo color en el servicio **RecursosService** este será el colorMorado y se usará en varios componentes gráficos en el futuro.
+Se va a crear un nuevo color en el servicio **RecursosService** este será el colorSecundario y se usará en varios componentes gráficos en el futuro.
 
 **Declaración**
 ```javascript
 // Al inicio de la clase
-private Color colorMorado;
+private Color colorSecundario;
 ```
 **Ejemplificación**
 ```javascript
 // Dentro del método crearColores
-colorMorado = new Color(151, 0, 158);
+colorSecundario = new Color(151, 0, 158);
 ```
 **Método get**
 ```javascript
-public Color getColorMorado(){ return colorMorado; }
+public Color getColorSecundario(){ return colorSecundario; }
 ```
 ### **Estructura de la aplicación**
 
@@ -317,7 +317,7 @@ Como la clase **LoginComponent** implementa de esta interfaz automáticamente se
 **Nota:** Como **addActionListener**es un método de la etapa de **Configuración** deberá estar ubicado justo después de la llamada al servicio y antes de que se adicione el botón:
 
 <div align="center">
-  <img  src="https://i.imgur.com/PmI1kNw.png">
+  <img  src="https://i.imgur.com/qiFh71R.png">
   <p>Se añade método de configuración addActionListener</p>
 </div>
 
@@ -628,10 +628,10 @@ public void crearJPanels(){
 **Construcción y adición de paneles**
 ```javascript
 // Dentro del método crearJPanels
-pNavegacion = sObjGraficos.construirJPanel(0, 0, 250, 700,sRecursos.getColorMorado(), null);
+pNavegacion = sObjGraficos.construirJPanel(0, 0, 250, 700,sRecursos.getColorSecundario(), null);
 this.add(pNavegacion);
 
-pBarra = sObjGraficos.construirJPanel(250, 0, 850, 50,sRecursos.getColorAzul(), null);
+pBarra = sObjGraficos.construirJPanel(250, 0, 850, 50,sRecursos.getColorPrincipal(), null);
 this.add(pBarra);
 
 pPrincipal = sObjGraficos.construirJPanel(250, 50, 850, 600, Color.WHITE, null);

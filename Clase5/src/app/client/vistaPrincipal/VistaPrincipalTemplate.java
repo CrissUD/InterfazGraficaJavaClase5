@@ -38,10 +38,10 @@ public class VistaPrincipalTemplate extends JFrame {
 	}
 
 	public void crearJPanels() {
-		pNavegacion = sObjGraficos.construirJPanel(0, 0, 250, 700, sRecursos.getColorMorado(), null);
+		pNavegacion = sObjGraficos.construirJPanel(0, 0, 250, 700, sRecursos.getColorSecundario(), null);
 		this.add(pNavegacion);
 
-		pBarra = sObjGraficos.construirJPanel(250, 0, 850, 50, sRecursos.getColorAzul(), null);
+		pBarra = sObjGraficos.construirJPanel(250, 0, 850, 50, sRecursos.getColorPrincipal(), null);
 		this.add(pBarra);
 
 		pPrincipal = sObjGraficos.construirJPanel(250, 50, 850, 600, Color.WHITE, null);

@@ -89,7 +89,7 @@ public class LoginTemplate extends JFrame {
       (pDerecha.getWidth() - 260) / 2, 130, 260, 40,
       null, 
       Color.WHITE, 
-      sRecursos.getColorAzul(), 
+      sRecursos.getColorPrincipal(), 
       sRecursos.getColorGrisOscuro(), 
       sRecursos.getBInferiorAzul(),
       "c"
@@ -104,7 +104,7 @@ public class LoginTemplate extends JFrame {
       (pDerecha.getWidth() - 250) / 2, 330, 250, 45,
       sRecursos.getCMano(), 
       null, null, 
-      sRecursos.getColorAzul(), 
+      sRecursos.getColorPrincipal(), 
       Color.WHITE, 
       null, 
       "c", 
@@ -119,7 +119,7 @@ public class LoginTemplate extends JFrame {
       240, 460, 145, 35, 
       sRecursos.getCMano(), 
       null, null,
-      sRecursos.getColorAzul(), 
+      sRecursos.getColorPrincipal(), 
       Color.WHITE, 
       null, 
       "c", 
@@ -367,7 +367,7 @@ public class LoginTemplate extends JFrame {
       "Clave Usuario", 
       (pDerecha.getWidth() - 260) / 2, 260, 260, 40,
       null, null, 
-      sRecursos.getColorAzul(), 
+      sRecursos.getColorPrincipal(), 
       sRecursos.getColorGrisOscuro(), 
       sRecursos.getBInferiorAzul(), 
       "c"
@@ -381,7 +381,7 @@ public class LoginTemplate extends JFrame {
       (pDerecha.getWidth() - 220) / 2, 210, 220, 30, 
       null,
       Color.WHITE, 
-      sRecursos.getColorAzul(), 
+      sRecursos.getColorPrincipal(), 
       "c"
     );
     pDerecha.add(cbTipoUsuario);
